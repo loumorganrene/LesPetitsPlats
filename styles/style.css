@@ -1,0 +1,92 @@
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 15rem;
+}
+
+.searchbar {
+    height: 3rem;
+    padding-left: 1.5rem;
+    background-color: #e9ecef;
+}
+
+.searchbar:focus {
+    background-color: #e9ecef;
+}
+
+.search {
+    background: none;
+    border: none;
+    top: 18%;
+    right: 1%;
+}
+
+.search.bi-search {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#sorting-list input:placeholder-shown,
+#sorting-list input::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.dropdown-searchbar {
+    border: 0;
+    color: white;
+}
+.dropdown-toggle,
+.dropdown-toggle::after {
+    color: white;
+}
+
+.bg-teal {
+background-color: #20c997;
+}
+
+.btn-group {
+    width: 150px;
+}
+
+#ingredients input[type="search"],
+#appareils input[type="search"],
+#ustensils input[type="search"] {
+    width: 70%;
+}
+
+#ingredients .btn,
+#appareils .btn,
+#ustensils .btn {
+    padding: 1rem 0;
+}
+
+#ingredients .btn:hover,
+#ingredients .btn:focus,
+#ingredients .btn.show {
+    background-color: #0d6efd;
+}
+
+#appareils .btn:hover,
+#appareils .btn:focus,
+#appareils .btn.show {
+    background-color: #20c997;
+}
+
+#appareils .btn:hover {
+    border-color: rgba(0, 128, 0, 0.192);
+}
+
+#appareils .btn:focus {
+    border: solid 1px green;
+    box-shadow:  0 0 0 0.25rem rgba(32, 201, 150, .5);
+}
+
+#ustensils .btn:hover,
+#ustensils .btn:focus,
+#ustensils .btn.show {
+    background-color: #dc3545;
+}
