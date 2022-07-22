@@ -1,9 +1,10 @@
 import { recipes } from "../data/recipes.js";
 import { Recipe } from "./models/RecipesModel.js";
+import { RecipeCard } from "./templates/recipeTemplate.js";
 
 class App {
     constructor() {
-        
+        this.$recipesWrapper = document.querySelector('#recipes-list')
     }
     /**
      * @returns {HTMLDOMElements}
@@ -12,7 +13,12 @@ class App {
         recipes
         .forEach(recipe => {
             const recipeData = new Recipe(recipe)
-            console.log(recipeData)
+            const Template = new RecipeCard(recipeData)
+            this.$recipesWrapper.appendChild(
+                Template.createRecipeCard()
+            )
+
+            console.log(Template)
         })
     }
 }

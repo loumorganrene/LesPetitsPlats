@@ -59,5 +59,9 @@ export class Recipe {
         return this._ingredientsData
     }
 
+    get ingredientsList() {
+        return this._ingredientsList
+    }
+
 }
 

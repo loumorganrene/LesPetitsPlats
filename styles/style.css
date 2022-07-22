@@ -1,3 +1,13 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+p {
+    font-size: 1.1rem;
+}
+
 header {
     display: flex;
     justify-content: center;
@@ -90,3 +100,22 @@ background-color: #20c997;
 #ustensils .btn.show {
     background-color: #dc3545;
 }
+
+.card-body {
+    background-color: #e9ecef;
+}
+
+article {
+    box-sizing: border-box;
+}
+
+#recipe-ingredients > * {
+    font-size: .8rem;
+}
+
+#recipe-instruction {
+    font-size: .8rem;
+    text-overflow: ellipsis;
+    height: 120px;
+    overflow: hidden;
+    }
