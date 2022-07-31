@@ -65,7 +65,7 @@ background-color: #20c997;
 #ingredients input[type="search"],
 #appareils input[type="search"],
 #ustensils input[type="search"] {
-    width: 70%;
+    width: 75%;
 }
 
 #ingredients .btn,
@@ -115,7 +115,12 @@ article {
 
 #recipe-instruction {
     font-size: .8rem;
-    text-overflow: ellipsis;
-    height: 120px;
+    text-overflow:"[...]";
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* number of lines to show */
+            line-clamp: 6; 
+    -webkit-box-orient: vertical;
     }
+
+    

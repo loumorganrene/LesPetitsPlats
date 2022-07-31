@@ -1,6 +1,7 @@
 import { recipes } from "../data/recipes.js";
+// import { IngredientFactory } from "./factories/IngredientsFactory.js";
 import { Recipe } from "./models/RecipesModel.js";
-import { RecipeCard } from "./templates/recipeTemplate.js";
+import { RecipeCard } from "./templates/RecipeTemplate.js";
 
 class App {
     constructor() {
@@ -17,8 +18,7 @@ class App {
             this.$recipesWrapper.appendChild(
                 Template.createRecipeCard()
             )
-
-            console.log(Template)
+            console.log(recipeData._ingredientsList)
         })
     }
 }

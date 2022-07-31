@@ -1,4 +1,5 @@
 /** Media constructor pattern
+ * @typedef {Object} RecipeModel
  * @property {number} id
  * @property {string} name
  * @property {number} servings
@@ -14,13 +15,8 @@ export class Recipe {
         this._id = recipes.id;
         this._name = recipes.name;
         this._servings = recipes.servings;
-        this._ingredientsList = [];
         this._ingredientsData = recipes.ingredients;
-        this._GETingredients = this._ingredientsData
-                    .forEach(data => { 
-                        this._ingredientsList.push(data['ingredient']);
-                        return this._ingredientsList;
-                    });
+        this._ingredientsList = this._ingredientsData.map(data => data.ingredient);
         this._duration = recipes.time;
         this._directions = recipes.description;
         this._appliance = recipes.appliance;
