@@ -1,0 +1,19 @@
+<div class="card h-100 shadow-sm">
+    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <title>Placeholder</title>
+        <rect width="100%" height="100%" fill="#c8bebd"></rect>
+    </svg>
+    <div class="card-body">
+        <div class="title row px-1">
+            <h2 class="col-9 fw-semibold fs-5">${this._recipe.name}</h2>
+            <p class="col text-end fw-bold"><i class="bi bi-alarm fw-bolder"></i> ${this._recipe.duration}min</p>
+        </div>
+        <div class="card-content row row-cols-1 row-cols-sm-2 g-1 p-1 mb-4">
+            <ul id="recipe-ingredients" class="col list-unstyled">
+                ${ingredient}
+            </ul>
+            <p id="recipe-instruction" class="col">${this._recipe.directions}</p>
+        </div>
+    </div>
+</div>

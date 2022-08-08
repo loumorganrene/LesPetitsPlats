@@ -19,7 +19,7 @@ export class SearchHandler {
     }
 
     searchbarHandler(userInput) {
-        console.log(this._recipe[1]._ingredientsList)
+        // console.log(this._recipe[1]._ingredientsList)
         // let test = this._recipe.map(recipe => {return recipe._ingredientsList.includes("concombre")})
         let test =  this._recipe.map(recipe => 
             { 
