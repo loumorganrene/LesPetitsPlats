@@ -22,42 +22,5 @@ export class Recipe {
         this._appliance = recipes.appliance;
         this._ustensils = recipes.ustensils;
     }
-    
-    get id() {
-        return this._id
-    }
-
-    get name() {
-        return this._name
-    }
-
-    get servings() {
-        return this._servings
-    }
-
-    get duration() {
-        return this._duration
-    }
-
-    get directions() {
-        return this._directions
-    }
-
-    get appliances() {
-        return this._appliance
-    }
-
-    get ustensils() {
-        return this._ustensils
-    }
-
-    get ingredientsData() {
-        return this._ingredientsData
-    }
-
-    get ingredientsList() {
-        return this._ingredientsList
-    }
-
 }
 

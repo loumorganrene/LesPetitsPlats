@@ -1,6 +1,21 @@
+import { RecipeCard } from "../templates/RecipeTemplate.js";
+// DOM Element
+const $recipesWrapper = document.querySelector('#recipes-list')
 const searchbar = document.querySelector('.searchbar')
+// REGEX
 const RegEx = /[^0-9<>()[\]\\.,;:\s@"][A-Za-z]{2,}/
-
+/**
+ * 
+ * @param {Recipe[]} recipes 
+ */
+export function createCards(recipes) {
+    recipes.forEach(recipeData => {
+        const Template = new RecipeCard(recipeData)
+        $recipesWrapper.appendChild(
+            Template.createRecipeCard()
+        )
+    })
+}
 export class SearchHandler {
     /**
      * @param {import('./models/RecipeModel').RecipeModel} recipeData 
@@ -19,20 +34,16 @@ export class SearchHandler {
     }
 
     searchbarHandler(userInput) {
-        // console.log(this._recipe[1]._ingredientsList)
-        // let test = this._recipe.map(recipe => {return recipe._ingredientsList.includes("concombre")})
-        let test =  this._recipe.map(recipe => 
+        const filterRecipebyUserInput = this._recipe.filter(recipe => 
             { 
-                if (userInput.match(RegEx) &&
-                    recipe._ingredientsList.join().includes(userInput) ||
-                    recipe._ustensils.includes(userInput) ||
-                    recipe._appliance.toLowerCase().includes(userInput) ||
-                    recipe._name.toLowerCase().includes(userInput)
-                    )
-                    {return recipe}
-                else return 0
+                return Boolean(userInput.match(RegEx) &&
+                recipe._ingredientsList.join().includes(userInput) ||
+                recipe._directions.includes(userInput) ||
+                recipe._name.toLowerCase().includes(userInput))
             })
-        console.log(test)
+            $recipesWrapper.innerHTML = ""
+            createCards(filterRecipebyUserInput)
+            // console.log(filterRecipebyUserInput)
     }
 
     // dropdownHandler() {
