@@ -1,25 +1,50 @@
 import { recipes } from "../data/recipes.js";
-// import { IngredientFactory } from "./factories/IngredientsFactory.js";
+import { SearchHandler } from "./handlers/Search.js";
 import { Recipe } from "./models/RecipesModel.js";
 import { RecipeCard } from "./templates/RecipeTemplate.js";
+const $recipesWrapper = document.querySelector('#recipes-list')
+
+/**
+ * 
+ * @param {Recipe[]} recipes 
+ */
+function createCards(recipes) {
+    recipes.forEach(recipeData => {
+        const Template = new RecipeCard(recipeData)
+        $recipesWrapper.appendChild(
+            Template.createRecipeCard()
+        )
+    })
+}
 
 class App {
     constructor() {
-        this.$recipesWrapper = document.querySelector('#recipes-list')
+        // this.$recipesWrapper = document.querySelector('#recipes-list')
     }
     /**
      * @returns {HTMLDOMElements}
      */
     async main() {
-        recipes
-        .forEach(recipe => {
-            const recipeData = new Recipe(recipe)
-            const Template = new RecipeCard(recipeData)
+        const recipeData = recipes.map(recipe => new Recipe(recipe))
+        // console.log(recipeData)
+        createCards(recipeData);
+
+        const search = new SearchHandler(recipeData)
+            search.init()
+            search.searchbarHandler()
+
+        createCards(recipeData)
+            /*const Template = new RecipeCard(recipeData)
             this.$recipesWrapper.appendChild(
                 Template.createRecipeCard()
             )
-            console.log(recipeData._ingredientsList)
-        })
+            const search = new SearchHandler(recipeData)
+            search.init()
+            search.searchbarHandler()*/
+            
+
+        // console.log(recipes)
+
     }
 }
 

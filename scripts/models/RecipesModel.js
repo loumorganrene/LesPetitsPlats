@@ -16,7 +16,7 @@ export class Recipe {
         this._name = recipes.name;
         this._servings = recipes.servings;
         this._ingredientsData = recipes.ingredients;
-        this._ingredientsList = this._ingredientsData.map(data => data.ingredient);
+        this._ingredientsList = this._ingredientsData.map(data => data.ingredient.toLowerCase());
         this._duration = recipes.time;
         this._directions = recipes.description;
         this._appliance = recipes.appliance;

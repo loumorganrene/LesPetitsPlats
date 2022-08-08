@@ -2,7 +2,7 @@ export class RecipeCard {
     /**
      * @param {import('./models/RecipeModel').RecipeModel} recipeData 
      */
-    constructor (recipeData) {
+    constructor(recipeData) {
         this._recipe = recipeData
     }
 
@@ -10,6 +10,7 @@ export class RecipeCard {
      * @returns {HTMLDOMElements}
      */
     createRecipeCard() {
+        const docFrag = document.createDocumentFragment();
         const $wrapper = document.createElement('article')
         $wrapper.classList.add('col')
 
@@ -18,8 +19,8 @@ export class RecipeCard {
         cardContainer.classList.add('h-100')
         cardContainer.classList.add('shadow-sm')
 
-        const cardImage = 
-        `<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+        const cardImage =
+            `<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
         role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
         <title>Placeholder</title>
         <rect width="100%" height="100%" fill="#c8bebd"></rect>
@@ -63,25 +64,53 @@ export class RecipeCard {
         recipeIngredients.setAttribute('id', 'recipe-ingredients')
         recipeIngredients.classList.add('col')
         recipeIngredients.classList.add('list-unstyled')
-        
+
+        // const ingredients = recipeData.ingredients.map(i => {
+        //     const ingredientName = `<strong>${i.ingredient}:</strong>`
+        //     const ingredientQuantity = ` ${i.quantity}`
+        //     const ingredientUnit = ` ${i.unit}`
+        //     if (i.quantity && i.unit) {
+        //         const ingredientContainer = document.createElement('li')
+        //         ingredientContainer.innerHTML = ingredientName + ingredientQuantity + ingredientUnit
+        //         recipeIngredients.appendChild(ingredientContainer)
+        //     } else if (i.quantity) {
+        //         const ingredientContainer = document.createElement('li')
+        //         ingredientContainer.innerHTML = ingredientName + ingredientQuantity
+        //         recipeIngredients.appendChild(ingredientContainer)
+        //     } else {
+        //         const ingredientName = `<strong>${i.ingredient}</strong>`
+        //         const ingredientContainer = document.createElement('li')
+        //         ingredientContainer.innerHTML = ingredientName
+        //         recipeIngredients.appendChild(ingredientContainer)
+        //     }
+        // })
+
+        // const dom =  `
+        //     <div>
+        //         <h4>${name}}
+        //         ingredients:
+        //         <ul>
+        //             ${ingredients}
+        //         </ul>
+        //     </div>
+        // `
+
         //ingredient quantity & unit factory
         this._recipe.ingredientsData.forEach(ingredient => {
             const ingredientName = `<strong>${ingredient.ingredient}:</strong>`
             const ingredientQuantity = ` ${ingredient.quantity}`
             const ingredientUnit = ` ${ingredient.unit}`
             if (ingredient.quantity && ingredient.unit) {
-                const ingredientContainer = document.createElement( 'li' )
+                const ingredientContainer = document.createElement('li')
                 ingredientContainer.innerHTML = ingredientName + ingredientQuantity + ingredientUnit
                 recipeIngredients.appendChild(ingredientContainer)
-            }
-            else if (ingredient.quantity) {
-                const ingredientContainer = document.createElement( 'li' )
+            } else if (ingredient.quantity) {
+                const ingredientContainer = document.createElement('li')
                 ingredientContainer.innerHTML = ingredientName + ingredientQuantity
                 recipeIngredients.appendChild(ingredientContainer)
-            }
-            else {
+            } else {
                 const ingredientName = `<strong>${ingredient.ingredient}</strong>`
-                const ingredientContainer = document.createElement( 'li' )
+                const ingredientContainer = document.createElement('li')
                 ingredientContainer.innerHTML = ingredientName
                 recipeIngredients.appendChild(ingredientContainer)
             }
@@ -99,7 +128,8 @@ export class RecipeCard {
         cardContainer.appendChild(cardBody)
 
         $wrapper.appendChild(cardContainer)
-        
-        return $wrapper
+        docFrag.appendChild($wrapper)
+
+        return docFrag
     }
 }
