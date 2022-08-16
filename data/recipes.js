@@ -14,7 +14,7 @@ export const recipes = [
                 "quantity" : 2
             },
             {
-                "ingredient" : "Crème de coco",
+                "ingredient" : "Crême de coco",
                 "quantity" : 2,
                 "unit" : "cuillères à soupe"
             },
@@ -28,7 +28,7 @@ export const recipes = [
             }
         ],
         "time": 10,
-        "description": "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée",
+        "description": "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crême de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée",
         "appliance": "Blender",
         "ustensils": ["cuillère à Soupe", "verres", "presse citron" ]
     },
@@ -65,7 +65,7 @@ export const recipes = [
             }
         ],
         "time": 60,
-        "description": "Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouver ajouter 1 à 2 cuillères à soupe de Crème de coco",
+        "description": "Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouver ajouter 1 à 2 cuillères à soupe de Crême de coco",
         "appliance": "Saladier",
         "ustensils": ["presse citron"]
     },{
@@ -162,7 +162,7 @@ export const recipes = [
                 "quantity": 2
            },
            {
-               "ingredient": "Crème fraiche",
+               "ingredient": "Crême fraiche",
                "quantity": 2,
                "unit": "cuillères à soupe"
            },
@@ -178,7 +178,7 @@ export const recipes = [
            }
         ],
         "time": 45,
-        "description": "Etaler la pâte feuilleté aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crème fraiche sur toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes",
+        "description": "Etaler la pâte feuilleté aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crême fraiche sur toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes",
         "appliance":"Four",
         "ustensils": ["moule à tarte", "râpe à fromage", "couteau"]
     },
@@ -200,7 +200,7 @@ export const recipes = [
                 "quantity": "2"
             },
             {
-                "ingredient":"Crème fraiche",
+                "ingredient":"Crême fraiche",
                 "quantity":25,
                 "unit": "cl"
             },
@@ -217,7 +217,7 @@ export const recipes = [
             }
         ],
         "time": 50,
-        "description": "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraiche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finallement verser la préparation à base d'oeufs et de crême fraiche. Laisser cuire au four pendant 30 minutes",
+        "description": "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crême fraiche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finallement verser la préparation à base d'oeufs et de crême fraiche. Laisser cuire au four pendant 30 minutes",
         "appliance": "Four",
         "ustensils": ["moule à tarte", "saladier", "fourchette"]
     },{
@@ -235,7 +235,7 @@ export const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Crème liquide",
+                "ingredient": "Crême liquide",
                 "quantity": 80,
                 "unit": "cl"
             },
@@ -381,7 +381,7 @@ export const recipes = [
                 "unit": "tranches"
             }, 
             {
-                "ingredient": "Pommes",
+                "ingredient": "Pomme",
                 "quantity": 1
             },
             {
@@ -409,7 +409,7 @@ export const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Pommes",
+                "ingredient": "Pomme",
                 "quantity": 8
             },
             {
@@ -569,7 +569,7 @@ export const recipes = [
                 "unit":"tiges"
             },
             {
-                "ingredient": "huile d'olives",
+                "ingredient": "huile d'olive",
                 "quantity": 2,
                 "unit": "cuillère à soupe"
             }
@@ -685,7 +685,7 @@ export const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Crème fraiche",
+                "ingredient": "Crême fraiche",
                 "quantity": 200,
                 "unit": "grammes"
             },
@@ -735,13 +735,13 @@ export const recipes = [
                 "unit": "cl"
             },
             {
-                "ingredient": "Crème Fraiche",
+                "ingredient": "Crême Fraiche",
                 "quantity" : 1,
                 "unit": "cuillères à soupe"
             }
         ],
         "time": 30,
-        "description":"Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Serivir.",
+        "description":"Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crême fraiche à la viande hachée. Serivir.",
         "appliance": "Casserolle.",
         "ustensils":["Cuillère en bois", "louche", "couteau"]
     },
@@ -805,7 +805,7 @@ export const recipes = [
                 "quantity": 3
             },
             {
-                "ingredient": "Crème Fraîche",
+                "ingredient": "Crême Fraîche",
                 "quantity": 20,
                 "unit": "cl"
             },
@@ -816,7 +816,7 @@ export const recipes = [
             }
         ],
         "time": 60,
-        "description":"Etaler la pate dans un moule et la piquer.Parsemer de beurre. Faire chauffer les lardon dans une poêle. Battre les oeufs en ajoutant la crème fraîche et le lait. Finalement ajouter les lardons, salez poivrez à votre gout. Verser l'ensemble sur la pâte. Cuire environ 50 minutes.",
+        "description":"Etaler la pate dans un moule et la piquer.Parsemer de beurre. Faire chauffer les lardon dans une poêle. Battre les oeufs en ajoutant la crême fraîche et le lait. Finalement ajouter les lardons, salez poivrez à votre gout. Verser l'ensemble sur la pâte. Cuire environ 50 minutes.",
         "appliance": "Four",
         "ustensils":["moule à gateaux", "rouleau à patisserie", "fouet"]
     },
@@ -908,7 +908,7 @@ export const recipes = [
                 "quantity": 1
             },
             {
-                "ingredient": "Huile d'olives"
+                "ingredient": "Huile d'olive"
             },
             {
                 "ingredient": "Oignon",
@@ -939,7 +939,7 @@ export const recipes = [
                 "quantity": 1
             },
             {
-                "ingredient": "Crème fraîche",
+                "ingredient": "Crême fraîche",
                 "quantity": 4,
                 "unit": "cuillère à soupe"
             },
@@ -990,7 +990,7 @@ export const recipes = [
             }
         ],
         "time": 80,
-        "description":"Emincer les blanc de poireaux et les faire chauffer dans 25 grammes de beurre. AJouter les pommes de terres coupées en morceaux. Ajouter l'eau et laisser mijoter pour 45 minutes. Chauffer l'oseille avec le beurre restant puis incorporer le tout. Mixez. Ajoutez la crème. Bon appetit.",
+        "description":"Emincer les blanc de poireaux et les faire chauffer dans 25 grammes de beurre. AJouter les pommes de terres coupées en morceaux. Ajouter l'eau et laisser mijoter pour 45 minutes. Chauffer l'oseille avec le beurre restant puis incorporer le tout. Mixez. Ajoutez la crême. Bon appetit.",
         "appliance": "Mixer",
         "ustensils":["casserolle","couteau"]
     },
@@ -1171,7 +1171,7 @@ export const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Crème fraîche",
+                "ingredient": "Crême fraîche",
                 "quantity": 20,
                 "unit": "cl"
             },
@@ -1184,7 +1184,7 @@ export const recipes = [
             }
         ],
         "time": 25,
-        "description":"Eplucher les patates douces et coupez les en morceaux. Les faire cuire durant 20 minute dans une casserolle d'eau bouillante. Passer au mixer en ajoutant la crème et l'huile d'olive à son gout. Salez, poivrez. Pressez l'orange et ajouter le jus à l'ensemble. Servir.",
+        "description":"Eplucher les patates douces et coupez les en morceaux. Les faire cuire durant 20 minute dans une casserolle d'eau bouillante. Passer au mixer en ajoutant la crême et l'huile d'olive à son gout. Salez, poivrez. Pressez l'orange et ajouter le jus à l'ensemble. Servir.",
         "appliance": "Mixer",
         "ustensils":["couteau", "économe", "cuillère en bois"]
     },
@@ -1207,7 +1207,7 @@ export const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Crème fraîche",
+                "ingredient": "Crême fraîche",
                 "quantity": 2,
                 "unit":"cuillères à soupe"
             },
@@ -1223,7 +1223,7 @@ export const recipes = [
             }
         ],
         "time": 25,
-        "description":"Éplucher les légumes, les couper en morceaux et les mettre à cuire dans une cocotte minute environ 15 minutes. Mixer en ajoutant le beurre, la crème. Ajouter le cumun et la noix de muscade.",
+        "description":"Éplucher les légumes, les couper en morceaux et les mettre à cuire dans une cocotte minute environ 15 minutes. Mixer en ajoutant le beurre, la crême. Ajouter le cumun et la noix de muscade.",
         "appliance": "Mixer",
         "ustensils":["cocotte minute", "couteau", "cuillère en bois"]
     },
@@ -1281,7 +1281,7 @@ export const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Huile d'olives",
+                "ingredient": "Huile d'olive",
                 "quantity": 25,
                 "unit": "cl"
             },
@@ -1485,7 +1485,7 @@ export const recipes = [
     }, 
     {
         "id": 44,
-        "name": "Crème déssert au chocolat",
+        "name": "Crême déssert au chocolat",
         "servings": 6,
         "ingredients": [
             {
@@ -1521,7 +1521,7 @@ export const recipes = [
     },
     {
         "id": 45,
-        "name": "Crème patissière",
+        "name": "Crême patissière",
         "servings": 8,
         "ingredients": [
             {
@@ -1610,13 +1610,13 @@ export const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Crème Fraîche",
+                "ingredient": "Crême Fraîche",
                 "quantity": 20,
                 "unit":"cl"
             }
         ],
         "time": 5,
-        "description":"Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraiche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir",
+        "description":"Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crême fraiche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir",
         "appliance": "Saladier",
         "ustensils":["fouet", "verres", "cuillère en bois"]
     },
@@ -1661,11 +1661,11 @@ export const recipes = [
         "servings": 4,
         "ingredients": [
             {
-                "ingredient": "Bananes",
+                "ingredient": "Banane",
                 "quantity": 2
             },
             {
-                "ingredient": "Kiwis",
+                "ingredient": "Kiwi",
                 "quantity": 3
             },
             {
@@ -1703,7 +1703,7 @@ export const recipes = [
                 "quantity": 6
             },
             {
-                "ingredient": "Poudre d'amendes",
+                "ingredient": "Poudre d'amandes",
                 "quantity": 500,
                 "unit": "grammes"
             },
