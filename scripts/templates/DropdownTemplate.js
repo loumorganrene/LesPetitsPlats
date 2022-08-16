@@ -1,4 +1,7 @@
-import { Recipe } from "../models/RecipesModel.js";
+// DOM Element
+const $ingredientsWrapper = document.querySelector('#ingredients ul')
+const $appliancesWrapper = document.querySelector('#appareils ul')
+const $ustensilsWrapper = document.querySelector('#ustensils ul')
 export class DropdownList {
     /**
      * @param {import('./models/RecipeModel').RecipeModel} recipeData 
@@ -6,34 +9,124 @@ export class DropdownList {
     constructor(recipeData) {
         this._recipe = recipeData
         this._ingredientsList = this._recipe
-                                .map(list => {return list._ingredientsList})
-                                .reduce((pre, cur) => pre.concat(cur))
-                                .slice().sort(function(a,b){return a > b})
-                                .reduce(function(a,b){if (a.slice(-1)[0] !== b) a.push(b);return a;},[])
+            .map(list => {
+                return list._ingredientsList
+            })
+            .reduce((pre, cur) => pre.concat(cur))
+            .slice().sort(function (a, b) {
+                return a > b
+            })
+            .reduce(function (a, b) {
+                if (a.slice(-1)[0] !== b) a.push(b);
+                return a;
+            }, [])
+        this._appliancesList = this._recipe
+            .map(list => {
+                return list._appliance
+            })
+            .slice().sort(function (a, b) {
+                return a > b
+            })
+            .reduce(function (a, b) {
+                if (a.slice(-1)[0] !== b) a.push(b);
+                return a;
+            }, [])
+        this._ustensilsList = this._recipe
+            .map(list => {
+                return list._ustensils
+            })
+            .reduce((pre, cur) => pre.concat(cur))
+            .slice().sort(function (a, b) {
+                return a > b
+            })
+            .reduce(function (a, b) {
+                if (a.slice(-1)[0] !== b) a.push(b);
+                return a;
+            }, [])
     }
 
     /**
      * @returns {HTMLDOMElements}
      */
-    createDropdownList() {
-        console.log("----DropdownTemplate.js----")
+    createIngredientDropdownList() {
+        /** Test */
+        console.log("----#1 - DropdownTemplate.js----")
         console.log(this._recipe)
         console.log(this._ingredientsList)
-        console.log("---------------------------")
+        console.log($ingredientsWrapper)
         const docFrag = document.createDocumentFragment()
-        const $wrapper = document.querySelector('#ingredients ul')
+        /** Ingredient dropdown */
+        const ingredient = this._ingredientsList
+            .map(element => {
+                return `<li>${element}</li>`
+            })
+            .join('')
+        const ingredientDropdown = `${ingredient}`
 
-        const item = this._ingredientsList
-                .map(element => {return `<li>${element}</li>`})
-                .join('')
-        //     return `<li>${i.ingredient}</li>`
-        // }).join('')       
-        
-        const dom = `${item}`
+        $ingredientsWrapper.innerHTML = ingredientDropdown
+        docFrag.appendChild($ingredientsWrapper)
 
-        $wrapper.innerHTML = dom
-        docFrag.appendChild($wrapper)
+        /** Appliance dropdown */
+        const $appliancesWrapper = document.querySelector('#appareils ul')
+        const appliance = this._appliancesList
+            .map(element => {
+                return `<li>${element}</li>`
+            })
+            .join('')
+        const applianceDropdown = `${appliance}`
 
+        $appliancesWrapper.innerHTML = applianceDropdown
+        docFrag.appendChild($appliancesWrapper)
+
+        return docFrag
+    }
+
+    /**
+     * @returns {HTMLDOMElements}
+     */
+    createApplianceDropdownList() {
+        /** Test */
+        console.log("----#2 - DropdownTemplate.js----")
+        console.log(this._recipe)
+        console.log(this._appliancesList)
+        console.log($appliancesWrapper)
+        const docFrag = document.createDocumentFragment()
+        /** Appliance dropdown */
+        const appliance = this._appliancesList
+            .map(element => {
+                return `<li>${element}</li>`
+            })
+            .join('')
+        const applianceDropdown = `${appliance}`
+
+        $appliancesWrapper.innerHTML = applianceDropdown
+        docFrag.appendChild($appliancesWrapper)
+
+        return docFrag
+    }
+
+    /**
+     * @returns {HTMLDOMElements}
+     */
+    createUstensilDropdownList() {
+        /** Test */
+        console.log("----#3 - DropdownTemplate.js----")
+        console.log(this._recipe)
+        console.log(this._ustensilsList)
+        console.log($ustensilsWrapper)
+
+        const docFrag = document.createDocumentFragment()
+        /** Ustensil dropdown */
+        const ustensil = this._ustensilsList
+            .map(element => {
+                return `<li>${element}</li>`
+            })
+            .join('')
+        const ustensilDropdown = `${ustensil}`
+
+        $ustensilsWrapper.innerHTML = ustensilDropdown
+        docFrag.appendChild($ustensilsWrapper)
+        console.log("---------------------------")
         return docFrag
     }
 }
