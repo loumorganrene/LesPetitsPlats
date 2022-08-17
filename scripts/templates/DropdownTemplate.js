@@ -12,10 +12,13 @@ export class DropdownList {
             .map(list => {
                 return list._ingredientsList
             })
+            //concat all-arrays items in one
             .reduce((pre, cur) => pre.concat(cur))
-            .slice().sort(function (a, b) {
+            //alphabetical order
+            .sort(function (a, b) {
                 return a > b
             })
+            //deduplicate item
             .reduce(function (a, b) {
                 if (a.slice(-1)[0] !== b) a.push(b);
                 return a;
@@ -24,9 +27,11 @@ export class DropdownList {
             .map(list => {
                 return list._appliance
             })
-            .slice().sort(function (a, b) {
+            //alphabetical order
+            .sort(function (a, b) {
                 return a > b
             })
+            //deduplicate item
             .reduce(function (a, b) {
                 if (a.slice(-1)[0] !== b) a.push(b);
                 return a;
@@ -35,10 +40,13 @@ export class DropdownList {
             .map(list => {
                 return list._ustensils
             })
+            //concat all-arrays items in one
             .reduce((pre, cur) => pre.concat(cur))
-            .slice().sort(function (a, b) {
+            //alphabetical order
+            .sort(function (a, b) {
                 return a > b
             })
+            //deduplicate item
             .reduce(function (a, b) {
                 if (a.slice(-1)[0] !== b) a.push(b);
                 return a;
@@ -65,18 +73,6 @@ export class DropdownList {
 
         $ingredientsWrapper.innerHTML = ingredientDropdown
         docFrag.appendChild($ingredientsWrapper)
-
-        /** Appliance dropdown */
-        const $appliancesWrapper = document.querySelector('#appareils ul')
-        const appliance = this._appliancesList
-            .map(element => {
-                return `<li>${element}</li>`
-            })
-            .join('')
-        const applianceDropdown = `${appliance}`
-
-        $appliancesWrapper.innerHTML = applianceDropdown
-        docFrag.appendChild($appliancesWrapper)
 
         return docFrag
     }

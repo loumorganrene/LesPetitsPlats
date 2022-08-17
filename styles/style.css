@@ -20,11 +20,11 @@ header {
 .searchbar {
     height: 3rem;
     padding-left: 1.5rem;
-    background-color: #e9ecef;
+    background-color: #E7E7E7;
 }
 
 .searchbar:focus {
-    background-color: #e9ecef;
+    background-color: #E7E7E7;
 }
 
 .search {
@@ -55,7 +55,7 @@ header {
 }
 
 .bg-teal {
-background-color: #20c997;
+background-color: #68D9A4;
 }
 
 .btn-group {
@@ -83,7 +83,7 @@ background-color: #20c997;
 #appareils .btn:hover,
 #appareils .btn:focus,
 #appareils .btn.show {
-    background-color: #20c997;
+    background-color: #68D9A4;
 }
 
 #appareils .btn:hover {
@@ -91,7 +91,7 @@ background-color: #20c997;
 }
 
 #appareils .btn:focus {
-    border: solid 1px green;
+    border: solid 1px #20c997;
     box-shadow:  0 0 0 0.25rem rgba(32, 201, 150, .5);
 }
 
@@ -99,6 +99,23 @@ background-color: #20c997;
 #ustensils .btn:focus,
 #ustensils .btn.show {
     background-color: #dc3545;
+}
+
+#ingredients ul,
+#appareils ul,
+#ustensils ul {
+    border-radius: 5px;
+    color: white;
+    padding: 1.5rem;
+    width: 600px;
+    column-count: 3;
+    column-gap: 2rem;
+}
+
+#ingredients li::first-letter,
+#appareils li::first-letter,
+#ustensils li::first-letter  {
+    text-transform:capitalize;
 }
 
 .card-body {
@@ -111,6 +128,10 @@ article {
 
 #recipe-ingredients > * {
     font-size: .8rem;
+}
+
+#recipe-ingredients li::first-letter {
+    text-transform:capitalize;
 }
 
 #recipe-instruction {

@@ -21,7 +21,7 @@ export class RecipeCard {
             const ingredientQuantity = `${i.quantity}`
             const ingredientUnit = `${i.unit}`
             if (i.quantity && i.unit) {
-                return `<li>${ingredientName}: ${ingredientQuantity}${ingredientUnit}</li>`
+                return `<li>${ingredientName}: ${ingredientQuantity} ${ingredientUnit}</li>`
             } else if (i.quantity) {
                 return `<li>${ingredientName}: ${ingredientQuantity}</li>`
             } else {
@@ -34,7 +34,7 @@ export class RecipeCard {
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
                             aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#c8bebd"></rect>
+                            <rect width="100%" height="100%" fill="#C7BEBE"></rect>
                         </svg>
                         <div class="card-body">
                             <div class="title row px-1">
