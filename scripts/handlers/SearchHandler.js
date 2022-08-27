@@ -4,7 +4,6 @@ import {
 import {
     DropdownList
 } from "../templates/DropdownTemplate.js";
-
 // DOM Element
 const $recipesWrapper = document.querySelector('#recipes-list')
 const searchbar = document.querySelector('.searchbar')
@@ -14,7 +13,6 @@ const $ustensilsWrapper = document.querySelector('#ustensils .dropdown-menu')
 const ingredientsSearchbar = document.querySelector('.ingredient-searchbar')
 const appliancesSearchbar = document.querySelector('.appliance-searchbar')
 const ustensilsSearchbar = document.querySelector('.ustensils-searchbar')
-
 // REGEX
 const RegEx = /[^0-9<>()[\]\\.,;:\s@"][A-Za-zÀ-ž]{2,}/
 /**
@@ -48,37 +46,39 @@ export class SearchHandler {
         // console.log(this._recipe)
         // console.log(this._listTest)
         // console.log($appliancesWrapper)
-        console.log(appliancesSearchbar)
+        // console.log(appliancesSearchbar)
         console.log("---------------------------")
         //Dropdowns init
-        const DropdownTest = new DropdownList(this._recipe)
+        const Dropdown = new DropdownList(this._recipe)
         $ingredientsWrapper.appendChild(
-            DropdownTest.createIngredientDropdownList()
+            Dropdown.createIngredientDropdownList()
         )
         $appliancesWrapper.appendChild(
-            DropdownTest.createApplianceDropdownList()
+            Dropdown.createApplianceDropdownList()
         )
         $ustensilsWrapper.appendChild(
-            DropdownTest.createUstensilDropdownList()
+            Dropdown.createUstensilDropdownList()
         )
-
-        //EventListener
+        //EventListeners
         searchbar.addEventListener('input', (e) => {
             const userInput = e.target.value.toLowerCase()
             this.searchbar(userInput)
         })
 
-        // ingredientsSearchbar.addEventListener('input', (e) => {
-        //     console.log(e.target.value.toLowerCase())
-        // })
-        
-        // appliancesSearchbar.addEventListener('input', (e) => {
-        //     const userApplianceSelection = e.target.value.toLowerCase()
-        // })
+        ingredientsSearchbar.addEventListener('input', (e) => {
+            const userIngredientInput = e.target.value.toLowerCase()
+            this.tagHandler(this._recipe, userIngredientInput)
+        })
 
-        // ustensilsSearchbar.addEventListener('input', (e) => {
-        //     const userUstensilSelection = e.target.value.toLowerCase()
-        // })
+        appliancesSearchbar.addEventListener('input', (e) => {
+            const userApplianceSelection = e.target.value.toLowerCase()
+            this.tagHandler(this._recipe, userApplianceSelection)
+        })
+
+        ustensilsSearchbar.addEventListener('input', (e) => {
+            const userUstensilSelection = e.target.value.toLowerCase()
+            this.tagHandler(this._recipe, userUstensilSelection)
+        })
     }
 
     searchbar(userInput) {
@@ -103,21 +103,21 @@ export class SearchHandler {
         })
 
         ustensilsSearchbar.addEventListener('input', (e) => {
-            const userUstensilSelection = e.target.value.toLowerCase()
+            const userUstensilSelection = e.target.value
             this.tagHandler(filterRecipebyUserInput, userUstensilSelection)
         })
     }
 
     dropdownHandler(recipeData) {
-        const DropdownTest = new DropdownList(recipeData)
+        const Dropdown = new DropdownList(recipeData)
         $ingredientsWrapper.appendChild(
-            DropdownTest.createIngredientDropdownList()
+            Dropdown.createIngredientDropdownList()
         )
         $appliancesWrapper.appendChild(
-            DropdownTest.createApplianceDropdownList()
+            Dropdown.createApplianceDropdownList()
         )
         $ustensilsWrapper.appendChild(
-            DropdownTest.createUstensilDropdownList()
+            Dropdown.createUstensilDropdownList()
         )
     }
 

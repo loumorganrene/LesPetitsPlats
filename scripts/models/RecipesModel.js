@@ -21,6 +21,7 @@ export class Recipe {
         this._directions = recipes.description;
         this._appliance = recipes.appliance;
         this._ustensils = recipes.ustensils;
+        this._ustensilsList = this._ustensils;
     }
 }
 

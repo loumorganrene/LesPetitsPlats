@@ -10,7 +10,6 @@ import {
 import {
     createCards
 } from "./handlers/SearchHandler.js";
-// import { DropdownList } from "./templates/DropdownTemplate.js";
 class App {
     constructor() {}
     /**
@@ -21,7 +20,7 @@ class App {
         const listTest = new Set(recipeData.map(list => {
             return list._ingredientsList
         }).reduce((pre, cur) => pre.concat(cur)))
-
+        
         /** Test */
         console.log("----From App.js----")
         console.log(recipeData)
@@ -32,9 +31,7 @@ class App {
 
         const search = new SearchHandler(recipeData)
         search.init()
-        // search.searchbar()
     }
 }
-
 const app = new App()
 app.main()

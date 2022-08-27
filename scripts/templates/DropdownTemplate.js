@@ -1,5 +1,6 @@
-import { removeDuplicates } from '../utils.js';
-
+import {
+    removeDuplicates
+} from '../utils.js';
 // DOM Element
 const $ingredientsWrapper = document.querySelector('#ingredients ul')
 const $appliancesWrapper = document.querySelector('#appareils ul')
@@ -15,7 +16,9 @@ export class DropdownList {
             .map(list => {
                 return list._ingredientsList
             })
+            //concat all-arrays items in one
             .reduce((pre, cur) => pre.concat(cur))
+            //alphabetical order
             .sort(function (a, b) {
                 return a > b
             }));
@@ -35,20 +38,18 @@ export class DropdownList {
             })
             //concat all-arrays items in one
             .reduce((pre, cur) => pre.concat(cur))
-            //alphabetical order
+            //all items in lowercase
+            .map(item => item.toLowerCase())
+            // alphabetical order
             .sort(function (a, b) {
                 return a > b
-            }))
+            })
+            )
     }
-
     /**
      * @returns {HTMLDOMElements}
      */
     createIngredientDropdownList() {
-        /** Test */
-        console.log("----#1 - DropdownTemplate.js----")
-        console.log(this._recipe)
-        console.log(this._ingredientsList)
         const docFrag = document.createDocumentFragment()
         /** Ingredient dropdown */
         const ingredient = this._ingredientsList
@@ -63,17 +64,10 @@ export class DropdownList {
 
         return docFrag
     }
-
     /**
      * @returns {HTMLDOMElements}
      */
     createApplianceDropdownList() {
-        /** Test */
-        // console.log("----#2 - DropdownTemplate.js----")
-        // console.log(this._recipe)
-        // console.log(this._appliancesList)
-        // console.log(this._appliancesList.filter(item => item.includes("a")).join())
-        // console.log($appliancesWrapper)
         const docFrag = document.createDocumentFragment()
         /** Appliance dropdown */
         const appliance = this._appliancesList
@@ -88,17 +82,14 @@ export class DropdownList {
 
         return docFrag
     }
-
     /**
      * @returns {HTMLDOMElements}
      */
     createUstensilDropdownList() {
-        /** Test */
-        // console.log("----#3 - DropdownTemplate.js----")
-        // console.log(this._recipe)
-        // console.log(this._ustensilsList)
-        // console.log($ustensilsWrapper)
-
+                /** Test */
+                console.log("----From DropdownTemplate.js----")
+                console.log(this._ustensilsList)
+                console.log("-------------------")
         const docFrag = document.createDocumentFragment()
         /** Ustensil dropdown */
         const ustensil = this._ustensilsList
@@ -110,15 +101,13 @@ export class DropdownList {
 
         $ustensilsWrapper.innerHTML = ustensilDropdown
         docFrag.appendChild($ustensilsWrapper)
-        console.log("---------------------------")
+
         return docFrag
     }
-
+    /**
+     * @returns {HTMLDOMElements}
+     */
     createAdvancedIngredientList() {
-        // /** Test */
-        // console.log("----#4 - DropdownTemplate.js----")
-        // console.log(this._recipe)
-        // console.log(this._ingredient)
         const docFrag = document.createDocumentFragment()
         /** Ingredient dropdown */
         const ingredient = this._ingredientsList
@@ -134,12 +123,10 @@ export class DropdownList {
 
         return docFrag
     }
-
+    /**
+     * @returns {HTMLDOMElements}
+     */
     createAdvancedApplianceList() {
-        // /** Test */
-        // console.log("----#5 - DropdownTemplate.js----")
-        // console.log(this._recipe)
-        // console.log(this._appliancesList.filter(item => item.includes(this._appliance)))
         const docFrag = document.createDocumentFragment()
         /** Appliance dropdown */
         const appliance = this._appliancesList
@@ -155,12 +142,14 @@ export class DropdownList {
 
         return docFrag
     }
-
+    /**
+     * @returns {HTMLDOMElements}
+     */
     createAdvancedUstensilList() {
-        // /** Test */
-        // console.log("----#6 - DropdownTemplate.js----")
-        // console.log(this._recipe)
-        // console.log(this._ustensil)
+        /** Test */
+        console.log("----From DropdownTemplate.js----")
+        console.log(this._ustensilsList)
+        console.log("-------------------")
         const docFrag = document.createDocumentFragment()
         /** Appliance dropdown */
         const ustensil = this._ustensilsList
