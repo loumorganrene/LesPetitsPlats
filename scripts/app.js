@@ -32,7 +32,7 @@ class App {
 
         const search = new SearchHandler(recipeData)
         search.init()
-        search.searchbar()
+        // search.searchbar()
     }
 }
 

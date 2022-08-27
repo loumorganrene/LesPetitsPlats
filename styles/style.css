@@ -39,10 +39,8 @@ header {
     font-weight: bold;
 }
 
-#sorting-list input:placeholder-shown,
-#sorting-list input::placeholder {
-    color: white;
-    opacity: 1;
+#sorting-list input {
+    padding: 1rem 1.5rem;
 }
 
 .dropdown-searchbar {
@@ -84,6 +82,7 @@ background-color: #68D9A4;
 #appareils .btn:focus,
 #appareils .btn.show {
     background-color: #68D9A4;
+    color: white;
 }
 
 #appareils .btn:hover {

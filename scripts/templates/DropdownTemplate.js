@@ -1,3 +1,5 @@
+import { removeDuplicates } from '../utils.js';
+
 // DOM Element
 const $ingredientsWrapper = document.querySelector('#ingredients ul')
 const $appliancesWrapper = document.querySelector('#appareils ul')
@@ -6,37 +8,28 @@ export class DropdownList {
     /**
      * @param {import('./models/RecipeModel').RecipeModel} recipeData 
      */
-    constructor(recipeData) {
+    constructor(recipeData, item) {
         this._recipe = recipeData
-        this._ingredientsList = this._recipe
+        this._item = item
+        this._ingredientsList = removeDuplicates(this._recipe
             .map(list => {
                 return list._ingredientsList
             })
-            //concat all-arrays items in one
             .reduce((pre, cur) => pre.concat(cur))
-            //alphabetical order
             .sort(function (a, b) {
                 return a > b
-            })
-            //deduplicate item
-            .reduce(function (a, b) {
-                if (a.slice(-1)[0] !== b) a.push(b);
-                return a;
-            }, [])
-        this._appliancesList = this._recipe
+            }));
+
+        this._appliancesList = removeDuplicates(this._recipe
             .map(list => {
-                return list._appliance
+                return list._appliance.toLowerCase()
             })
             //alphabetical order
             .sort(function (a, b) {
                 return a > b
-            })
-            //deduplicate item
-            .reduce(function (a, b) {
-                if (a.slice(-1)[0] !== b) a.push(b);
-                return a;
-            }, [])
-        this._ustensilsList = this._recipe
+            }))
+
+        this._ustensilsList = removeDuplicates(this._recipe
             .map(list => {
                 return list._ustensils
             })
@@ -45,12 +38,7 @@ export class DropdownList {
             //alphabetical order
             .sort(function (a, b) {
                 return a > b
-            })
-            //deduplicate item
-            .reduce(function (a, b) {
-                if (a.slice(-1)[0] !== b) a.push(b);
-                return a;
-            }, [])
+            }))
     }
 
     /**
@@ -61,7 +49,6 @@ export class DropdownList {
         console.log("----#1 - DropdownTemplate.js----")
         console.log(this._recipe)
         console.log(this._ingredientsList)
-        console.log($ingredientsWrapper)
         const docFrag = document.createDocumentFragment()
         /** Ingredient dropdown */
         const ingredient = this._ingredientsList
@@ -82,10 +69,11 @@ export class DropdownList {
      */
     createApplianceDropdownList() {
         /** Test */
-        console.log("----#2 - DropdownTemplate.js----")
-        console.log(this._recipe)
-        console.log(this._appliancesList)
-        console.log($appliancesWrapper)
+        // console.log("----#2 - DropdownTemplate.js----")
+        // console.log(this._recipe)
+        // console.log(this._appliancesList)
+        // console.log(this._appliancesList.filter(item => item.includes("a")).join())
+        // console.log($appliancesWrapper)
         const docFrag = document.createDocumentFragment()
         /** Appliance dropdown */
         const appliance = this._appliancesList
@@ -106,10 +94,10 @@ export class DropdownList {
      */
     createUstensilDropdownList() {
         /** Test */
-        console.log("----#3 - DropdownTemplate.js----")
-        console.log(this._recipe)
-        console.log(this._ustensilsList)
-        console.log($ustensilsWrapper)
+        // console.log("----#3 - DropdownTemplate.js----")
+        // console.log(this._recipe)
+        // console.log(this._ustensilsList)
+        // console.log($ustensilsWrapper)
 
         const docFrag = document.createDocumentFragment()
         /** Ustensil dropdown */
@@ -125,4 +113,68 @@ export class DropdownList {
         console.log("---------------------------")
         return docFrag
     }
+
+    createAdvancedIngredientList() {
+        // /** Test */
+        // console.log("----#4 - DropdownTemplate.js----")
+        // console.log(this._recipe)
+        // console.log(this._ingredient)
+        const docFrag = document.createDocumentFragment()
+        /** Ingredient dropdown */
+        const ingredient = this._ingredientsList
+            .filter(item => item.includes(this._item))
+            .map(element => {
+                return `<li>${element}</li>`
+            })
+            .join('')
+        const ingredientDropdown = `${ingredient}`
+
+        $ingredientsWrapper.innerHTML = ingredientDropdown
+        docFrag.appendChild($ingredientsWrapper)
+
+        return docFrag
+    }
+
+    createAdvancedApplianceList() {
+        // /** Test */
+        // console.log("----#5 - DropdownTemplate.js----")
+        // console.log(this._recipe)
+        // console.log(this._appliancesList.filter(item => item.includes(this._appliance)))
+        const docFrag = document.createDocumentFragment()
+        /** Appliance dropdown */
+        const appliance = this._appliancesList
+            .filter(item => item.includes(this._item))
+            .map(element => {
+                return `<li>${element}</li>`
+            })
+            .join('')
+        const applianceDropdown = `${appliance}`
+
+        $appliancesWrapper.innerHTML = applianceDropdown
+        docFrag.appendChild($appliancesWrapper)
+
+        return docFrag
+    }
+
+    createAdvancedUstensilList() {
+        // /** Test */
+        // console.log("----#6 - DropdownTemplate.js----")
+        // console.log(this._recipe)
+        // console.log(this._ustensil)
+        const docFrag = document.createDocumentFragment()
+        /** Appliance dropdown */
+        const ustensil = this._ustensilsList
+            .filter(item => item.includes(this._item))
+            .map(element => {
+                return `<li>${element}</li>`
+            })
+            .join('')
+        const ustensilDropdown = `${ustensil}`
+
+        $ustensilsWrapper.innerHTML = ustensilDropdown
+        docFrag.appendChild($ustensilsWrapper)
+
+        return docFrag
+    }
+
 }

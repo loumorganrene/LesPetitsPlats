@@ -37,24 +37,32 @@
       <!-- Selector is also a searching bar -->
       <div id="ingredients" class="btn-group btn-width">
         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <input class="bg-primary dropdown-searchbar" type="search" autocomplete="true" placeholder="Ingrédients">
+          Ingrédients
         </button>
-        <ul class="dropdown-menu bg-primary"></ul>
+        <div class="dropdown-menu bg-primary">
+          <input class="ingredient-searchbar bg-primary dropdown-searchbar" type="search" autocomplete="true" placeholder="Rechercher un ingrédient">
+          <ul class="list-unstyled"></ul>
+        </div>
       </div>
 
       <div id="appareils" class="btn-group btn-width">
         <button type="button" class="btn bg-teal dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <input class="bg-teal dropdown-searchbar" type="search" autocomplete="true" placeholder="Appareils">
+          Appareils
         </button>
-        <ul class="dropdown-menu bg-teal"></ul>
+        <div class="dropdown-menu bg-teal">
+          <input class="appliance-searchbar bg-teal dropdown-searchbar" type="search" autocomplete="true" placeholder="Rechercher un appareil">
+          <ul class="list-unstyled"></ul>
+        </div>
       </div>
 
       <div id="ustensils" class="btn-group btn-width">
         <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <input class="bg-danger dropdown-searchbar" type="search" autocomplete="true" placeholder="Ustensiles">
+          Ustensiles
         </button>
-        <ul class="dropdown-menu bg-danger"></ul>
-      </div>
+        <div class="bg-danger dropdown-menu">
+          <input class="ustensils-searchbar bg-danger dropdown-searchbar" type="search" autocomplete="true" placeholder="Rechercher un ustensiles">
+          <ul class="list-unstyled"></ul>
+        </div>
     </div>
 
   </nav>

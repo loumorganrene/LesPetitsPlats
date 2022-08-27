@@ -4,15 +4,16 @@ import {
 import {
     DropdownList
 } from "../templates/DropdownTemplate.js";
+
 // DOM Element
 const $recipesWrapper = document.querySelector('#recipes-list')
 const searchbar = document.querySelector('.searchbar')
-const $ingredientsWrapper = document.querySelector('#ingredients')
-const $appliancesWrapper = document.querySelector('#appareils')
-const $ustensilsWrapper = document.querySelector('#ustensils')
-const ingredientsSearchbar = document.querySelector('#ingredients input')
-const appliancesSearchbar = document.querySelector('#appareils input')
-const ustensilsSearchbar = document.querySelector('#ustensils input')
+const $ingredientsWrapper = document.querySelector('#ingredients .dropdown-menu')
+const $appliancesWrapper = document.querySelector('#appareils .dropdown-menu')
+const $ustensilsWrapper = document.querySelector('#ustensils .dropdown-menu')
+const ingredientsSearchbar = document.querySelector('.ingredient-searchbar')
+const appliancesSearchbar = document.querySelector('.appliance-searchbar')
+const ustensilsSearchbar = document.querySelector('.ustensils-searchbar')
 
 // REGEX
 const RegEx = /[^0-9<>()[\]\\.,;:\s@"][A-Za-zÀ-ž]{2,}/
@@ -21,9 +22,6 @@ const RegEx = /[^0-9<>()[\]\\.,;:\s@"][A-Za-zÀ-ž]{2,}/
  * @param {Recipe[]} recipes 
  */
 export function createCards(recipes) {
-    const listTest = new Set(recipes.map(list => {
-        return list._ingredientsList
-    }).reduce((pre, cur) => pre.concat(cur)))
     recipes.forEach(recipeData => {
         const Template = new RecipeCard(recipeData)
         $recipesWrapper.appendChild(
@@ -47,9 +45,10 @@ export class SearchHandler {
     init() {
         /** Test */
         console.log("----From SearhHandler.js----")
-        console.log(this._recipe)
-        console.log(this._listTest)
-        console.log($appliancesWrapper)
+        // console.log(this._recipe)
+        // console.log(this._listTest)
+        // console.log($appliancesWrapper)
+        console.log(appliancesSearchbar)
         console.log("---------------------------")
         //Dropdowns init
         const DropdownTest = new DropdownList(this._recipe)
@@ -62,23 +61,24 @@ export class SearchHandler {
         $ustensilsWrapper.appendChild(
             DropdownTest.createUstensilDropdownList()
         )
+
         //EventListener
         searchbar.addEventListener('input', (e) => {
             const userInput = e.target.value.toLowerCase()
             this.searchbar(userInput)
         })
-        ingredientsSearchbar.addEventListener('input', (e) => {
-            const userIngredientSelection = e.target.value.toLowerCase()
-            this.searchbar(userIngredientSelection)
-        })
-        appliancesSearchbar.addEventListener('input', (e) => {
-            const userApplianceSelection = e.target.value.toLowerCase()
-            this.searchbar(userApplianceSelection)
-        })
-        ustensilsSearchbar.addEventListener('input', (e) => {
-            const userUstensilSelection = e.target.value.toLowerCase()
-            this.searchbar(userUstensilSelection)
-        })
+
+        // ingredientsSearchbar.addEventListener('input', (e) => {
+        //     console.log(e.target.value.toLowerCase())
+        // })
+        
+        // appliancesSearchbar.addEventListener('input', (e) => {
+        //     const userApplianceSelection = e.target.value.toLowerCase()
+        // })
+
+        // ustensilsSearchbar.addEventListener('input', (e) => {
+        //     const userUstensilSelection = e.target.value.toLowerCase()
+        // })
     }
 
     searchbar(userInput) {
@@ -92,6 +92,20 @@ export class SearchHandler {
         createCards(filterRecipebyUserInput)
         this.dropdownHandler(filterRecipebyUserInput)
 
+        ingredientsSearchbar.addEventListener('input', (e) => {
+            const userIngredientInput = e.target.value.toLowerCase()
+            this.tagHandler(filterRecipebyUserInput, userIngredientInput)
+        })
+
+        appliancesSearchbar.addEventListener('input', (e) => {
+            const userApplianceSelection = e.target.value.toLowerCase()
+            this.tagHandler(filterRecipebyUserInput, userApplianceSelection)
+        })
+
+        ustensilsSearchbar.addEventListener('input', (e) => {
+            const userUstensilSelection = e.target.value.toLowerCase()
+            this.tagHandler(filterRecipebyUserInput, userUstensilSelection)
+        })
     }
 
     dropdownHandler(recipeData) {
@@ -107,7 +121,16 @@ export class SearchHandler {
         )
     }
 
-    // tagHandler() {
-
-    // }
+    tagHandler(recipeData, item) {
+        const DropdownAdvanced = new DropdownList(recipeData, item)
+        $ingredientsWrapper.appendChild(
+            DropdownAdvanced.createAdvancedIngredientList()
+        )
+        $appliancesWrapper.appendChild(
+            DropdownAdvanced.createAdvancedApplianceList()
+        )
+        $ustensilsWrapper.appendChild(
+            DropdownAdvanced.createAdvancedUstensilList()
+        )
+    }
 }
