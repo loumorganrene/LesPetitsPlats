@@ -1,19 +1,22 @@
 import {
     removeDuplicates
 } from '../Utils/ArrayUtils.js';
+
 // DOM Element
-export const $ingredientsWrapper = document.querySelector('#ingredients ul')
-export const $appliancesWrapper = document.querySelector('#appareils ul')
-export const $ustensilsWrapper = document.querySelector('#ustensils ul')
-export class DropdownList {
+const $ingredientsWrapper = document.querySelector('#ingredients ul')
+const $appliancesWrapper = document.querySelector('#appareils ul')
+const $ustensilsWrapper = document.querySelector('#ustensils ul')
+export class TagTemplate {
     /**
      * @param {import('./models/RecipeModel').RecipeModel} recipeData 
      */
-    constructor(recipeData) {
+    constructor(recipeData, item) {
         this._recipe = recipeData
-
+        this._item = item
         this._ingredientsList = removeDuplicates(this._recipe
-            .map(list => list._ingredientsList)
+            .map(list => {
+                return list._ingredientsList
+            })
             //concat all-arrays items in one
             .reduce((pre, cur) => pre.concat(cur))
             //alphabetical order
@@ -22,14 +25,18 @@ export class DropdownList {
             }));
 
         this._appliancesList = removeDuplicates(this._recipe
-            .map(list => list._appliance.toLowerCase())
+            .map(list => {
+                return list._appliance.toLowerCase()
+            })
             //alphabetical order
             .sort(function (a, b) {
                 return a > b
             }))
 
         this._ustensilsList = removeDuplicates(this._recipe
-            .map(list => list._ustensils)
+            .map(list => {
+                return list._ustensils
+            })
             //concat all-arrays items in one
             .reduce((pre, cur) => pre.concat(cur))
             //all items in lowercase
@@ -40,15 +47,17 @@ export class DropdownList {
             })
         )
     }
+
     /**
      * @returns {HTMLDOMElements}
      */
-    createIngredientDropdownList() {
+    createAdvancedIngredientList() {
         const docFrag = document.createDocumentFragment()
         /** Ingredient dropdown */
         const ingredient = this._ingredientsList
+            .filter(item => item.includes(this._item))
             .map(element => {
-                return `<li class="ingredient">${element}</li>`
+                return `<li>${element}</li>`
             })
             .join('')
         const ingredientDropdown = `${ingredient}`
@@ -61,12 +70,13 @@ export class DropdownList {
     /**
      * @returns {HTMLDOMElements}
      */
-    createApplianceDropdownList() {
+    createAdvancedApplianceList() {
         const docFrag = document.createDocumentFragment()
         /** Appliance dropdown */
         const appliance = this._appliancesList
+            .filter(item => item.includes(this._item))
             .map(element => {
-                return `<li class="appliance">${element}</li>`
+                return `<li>${element}</li>`
             })
             .join('')
         const applianceDropdown = `${appliance}`
@@ -79,12 +89,17 @@ export class DropdownList {
     /**
      * @returns {HTMLDOMElements}
      */
-    createUstensilDropdownList() {
+    createAdvancedUstensilList() {
+        /** Test */
+        console.log("----From DropdownTemplate.js----")
+        console.log(this._ustensilsList)
+        console.log("-------------------")
         const docFrag = document.createDocumentFragment()
-        /** Ustensil dropdown */
+        /** Appliance dropdown */
         const ustensil = this._ustensilsList
+            .filter(item => item.includes(this._item))
             .map(element => {
-                return `<li class="ustensil">${element}</li>`
+                return `<li>${element}</li>`
             })
             .join('')
         const ustensilDropdown = `${ustensil}`
@@ -94,4 +109,5 @@ export class DropdownList {
 
         return docFrag
     }
+
 }

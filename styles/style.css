@@ -7,7 +7,7 @@
 p {
     font-size: 1.1rem;
 }
-
+/****** Header ******/
 header {
     display: flex;
     justify-content: center;
@@ -39,6 +39,24 @@ header {
     font-weight: bold;
 }
 
+.searchbar-wrapper[data-tag]::after {
+    content: attr(data-tag);
+    font-size: 1rem;
+    color: var(--light-clr);
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: right;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  .searchbar-wrapper[data-tag-visible="true"]::after {
+    opacity: 1;
+  }
+
+/**** Dropdown *****/
 #sorting-list input {
     padding: 1rem 1.5rem;
 }
@@ -117,6 +135,13 @@ background-color: #68D9A4;
     text-transform:capitalize;
 }
 
+#ingredients li:hover,
+#appareils li:hover,
+#ustensils li:hover  {
+    cursor: pointer;
+}
+
+/****** Recipes ******/
 .card-body {
     background-color: #e9ecef;
 }
