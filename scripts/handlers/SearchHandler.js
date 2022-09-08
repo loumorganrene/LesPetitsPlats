@@ -1,19 +1,15 @@
 import {
-    createCards, $recipesWrapper
+    createCards
 } from '../Utils/CreateCard.js';
 import {
-    DropdownList
-} from "../templates/DropdownTemplate.js";
-import { TagTemplate } from '../templates/TagTemplate.js';
+    $ingredientsWrapper,
+    $appliancesWrapper,
+    $ustensilsWrapper,
+    createDropdown
+} from '../Utils/CreateDropdown.js';
 // DOM Element
 const $searchbarWrapper = document.querySelector('.searchbar-wrapper')
-const searchbar = document.querySelector('.searchbar')
-const $ingredientsWrapper = document.querySelector('#ingredients .dropdown-menu')
-const $appliancesWrapper = document.querySelector('#appareils .dropdown-menu')
-const $ustensilsWrapper = document.querySelector('#ustensils .dropdown-menu')
-const ingredientsSearchbar = document.querySelector('.ingredient-searchbar')
-const appliancesSearchbar = document.querySelector('.appliance-searchbar')
-const ustensilsSearchbar = document.querySelector('.ustensils-searchbar')
+const mainSearchbar = document.querySelector('.searchbar')
 
 // REGEX
 const RegEx = /[^0-9<>()[\]\\.,;:\s@"][A-Za-zÀ-ž]{2,}/
@@ -24,98 +20,89 @@ export class SearchHandler {
      */
     constructor(recipeData) {
         this._recipe = recipeData
+        this._searchState = {
+            main: '',
+            ingredients: [],
+            ustensils: [],
+            appliances: [],
+        }
+        this.finalSearchResult = this._recipe;
     }
 
     init() {
-        /** Test */
-        console.log("----From SearhHandler.js----")
-        // console.log(this._recipe)
-        // console.log(this._listTest)
-        // console.log($appliancesWrapper)
-        // console.log(appliancesSearchbar)
-        console.log("---------------------------")
-        //Dropdowns init
-        const Dropdown = new DropdownList(this._recipe)
-        $ingredientsWrapper.appendChild(
-            Dropdown.createIngredientDropdownList()
-        )
-        $appliancesWrapper.appendChild(
-            Dropdown.createApplianceDropdownList()
-        )
-        $ustensilsWrapper.appendChild(
-            Dropdown.createUstensilDropdownList()
-        )
-        //EventListeners
-        searchbar.addEventListener('input', (e) => {
+        //mainSearch init
+        mainSearchbar.addEventListener('input', e => {
             const userInput = e.target.value.toLowerCase()
-            this.searchbar(userInput)
+            this._searchState.main = userInput
+            this.searchUpdate(userInput)
+            console.log(this._searchState)
+        })
+        //tagSearch init
+        $ingredientsWrapper.addEventListener("click", e => {
+            const userSelection = e.target.innerHTML
+            this._searchState.ingredients.push(userSelection)
+            this.searchUpdate(userSelection)
+            console.log(this._searchState.ingredients)
+        })
+        $appliancesWrapper.addEventListener("click", e => {
+            const userSelection = e.target.innerHTML
+            this._searchState.appliances.push(userSelection)
+            this.searchUpdate(userSelection)
+            console.log(this._searchState.appliances)
+        })
+        $ustensilsWrapper.addEventListener("click", e => {
+            const userSelection = e.target.innerHTML
+            this._searchState.ustensils.push(userSelection)
+            this.searchUpdate(userSelection)
+            console.log(this._searchState.ustensils)
         })
     }
 
-    searchbar(userInput) {
-        const filterRecipebyUserInput = this._recipe.filter(recipe => {
+    searchUpdate(searchState) {
+        const mainSearchRecipesList = this.mainSearchbar(this._recipe, this._searchState.main)
+        const ingredientTagsRecipesList = this.ingredientTagSelection(this.finalSearchResult, this._searchState.ingredients)
+        const applianceTagsRecipesList = this.applianceTagSelection(this.finalSearchResult, this._searchState.appliances)
+        const ustensilTagsRecipesList = this.ustensilTagSelection(this.finalSearchResult, this._searchState.ustensils)
+
+        createDropdown(this.finalSearchResult)
+        createCards(this.finalSearchResult)
+        console.log(this.finalSearchResult)
+        console.log(this._searchState)
+    }
+
+    mainSearchbar(recipeData, userInput) {
+        const searchFilter = recipeData.filter(recipe => {
             return Boolean(userInput.match(RegEx) &&
                 recipe._ingredientsList.join().includes(userInput) ||
                 recipe._directions.includes(userInput) ||
                 recipe._name.toLowerCase().includes(userInput))
         })
-        $recipesWrapper.innerHTML = ""
-        createCards(filterRecipebyUserInput)
-        this.dropdownHandler(filterRecipebyUserInput)
+        this.finalSearchResult = searchFilter
+        return searchFilter
     }
 
-    dropdownHandler(recipeData) {
-        const Dropdown = new DropdownList(recipeData)
-        $ingredientsWrapper.appendChild(
-            Dropdown.createIngredientDropdownList()
-        )
-        $appliancesWrapper.appendChild(
-            Dropdown.createApplianceDropdownList()
-        )
-        $ustensilsWrapper.appendChild(
-            Dropdown.createUstensilDropdownList()
-        )
-
-        ingredientsSearchbar.addEventListener('input', e => {
-            const ingredientInput = e.target.value.toLowerCase()
-            const DropdownAdvanced = new TagTemplate(recipeData, ingredientInput)
-            $ingredientsWrapper.appendChild(
-                DropdownAdvanced.createAdvancedIngredientList()
-            )
+    ingredientTagSelection(recipeData, userSelection) {
+        const tagFilter = recipeData.filter(recipe => {
+            return Boolean(recipe._ingredientsList.join().includes(userSelection))
         })
-        appliancesSearchbar.addEventListener('input', e => {
-            const applianceInput = e.target.value.toLowerCase()
-            const DropdownAdvanced = new TagTemplate(recipeData, applianceInput)
-            $appliancesWrapper.appendChild(
-                DropdownAdvanced.createAdvancedApplianceList()
-            )
-        })
-        ustensilsSearchbar.addEventListener('input', e => {
-            const ustensilInput = e.target.value.toLowerCase()
-            const DropdownAdvanced = new TagTemplate(recipeData, ustensilInput)
-            $ustensilsWrapper.appendChild(
-                DropdownAdvanced.createAdvancedUstensilList()
-            )
-        })
-
-        //Tag Handler
-        $ingredientsWrapper.addEventListener("click", e => {
-            const userSelect = e.target.innerHTML
-            $searchbarWrapper.setAttribute("data-tag-visible", "true");
-            $searchbarWrapper.setAttribute("data-tag", userSelect);
-            console.log(userSelect)
-        })
-        $appliancesWrapper.addEventListener("click", e => {
-            const userSelect = e.target.innerHTML
-            $searchbarWrapper.setAttribute("data-tag-visible", "true");
-            $searchbarWrapper.setAttribute("data-tag", userSelect);
-            console.log(userSelect)
-        })
-        $ustensilsWrapper.addEventListener("click", e => {
-            const userSelect = e.target.innerHTML
-            $searchbarWrapper.setAttribute("data-tag-visible", "true");
-            $searchbarWrapper.setAttribute("data-tag", userSelect);
-            console.log(userSelect)
-        })
+        this.finalSearchResult = tagFilter
+        return tagFilter
     }
+
+    applianceTagSelection(recipeData, userSelection) {
+        const tagFilter = recipeData.filter(recipe => {
+            return Boolean(recipe._appliance.toLowerCase().includes(userSelection))
+        })
+        this.finalSearchResult = tagFilter
+        return tagFilter
+    }
+
+    ustensilTagSelection(recipeData, userSelection) {
+        const tagFilter = recipeData.filter(recipe => {
+            return Boolean(recipe._ustensils.join().includes(userSelection))
+        })
+        this.finalSearchResult = tagFilter
+        return tagFilter
+    }
+
 }

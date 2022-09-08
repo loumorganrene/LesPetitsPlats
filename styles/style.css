@@ -42,11 +42,17 @@ header {
 .searchbar-wrapper[data-tag]::after {
     content: attr(data-tag);
     font-size: 1rem;
-    color: var(--light-clr);
+    background-color: #0d6efd;
+    width: fit-content;
+    height: 2.5rem;
     display: block;
+    color: white;
+    padding: 0 1rem;
+    padding-top: 1rem;
     margin-top: 7px;
     margin-bottom: 7px;
-    text-align: right;
+    border-radius: 5px;
+    text-align: left;
     line-height: 0.3;
     opacity: 0;
     transition: 0.3s;

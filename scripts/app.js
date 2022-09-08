@@ -5,11 +5,15 @@ import {
     Recipe
 } from "./models/RecipesModel.js";
 import {
+    createDropdown
+} from './Utils/CreateDropdown.js';
+import {
     createCards
 } from './Utils/CreateCard.js';
 import {
     SearchHandler
 } from "./handlers/SearchHandler.js";
+
 class App {
     constructor() {}
     /**
@@ -23,8 +27,9 @@ class App {
         console.log(recipeData)
         console.log("-------------------")
 
+        createDropdown(recipeData)
         createCards(recipeData)
-
+        
         const search = new SearchHandler(recipeData)
         search.init()
     }

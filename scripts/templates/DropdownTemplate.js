@@ -43,10 +43,11 @@ export class DropdownList {
     /**
      * @returns {HTMLDOMElements}
      */
-    createIngredientDropdownList() {
+    createIngredientDropdownList(query = '') {
         const docFrag = document.createDocumentFragment()
         /** Ingredient dropdown */
         const ingredient = this._ingredientsList
+            .filter(item => item.includes(query))
             .map(element => {
                 return `<li class="ingredient">${element}</li>`
             })
@@ -61,10 +62,11 @@ export class DropdownList {
     /**
      * @returns {HTMLDOMElements}
      */
-    createApplianceDropdownList() {
+    createApplianceDropdownList(query = '') {
         const docFrag = document.createDocumentFragment()
         /** Appliance dropdown */
         const appliance = this._appliancesList
+            .filter(item => item.includes(query))
             .map(element => {
                 return `<li class="appliance">${element}</li>`
             })
@@ -79,10 +81,11 @@ export class DropdownList {
     /**
      * @returns {HTMLDOMElements}
      */
-    createUstensilDropdownList() {
+    createUstensilDropdownList(query = '') {
         const docFrag = document.createDocumentFragment()
         /** Ustensil dropdown */
         const ustensil = this._ustensilsList
+            .filter(item => item.includes(query))
             .map(element => {
                 return `<li class="ustensil">${element}</li>`
             })
