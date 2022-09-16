@@ -19,8 +19,8 @@ export class DropdownList {
             //alphabetical order
             .sort(function (a, b) {
                 return a > b
-            }));
-
+            }))
+            console.log(this._ingredientsList)
         this._appliancesList = removeDuplicates(this._recipe
             .map(list => list._appliance.toLowerCase())
             //alphabetical order

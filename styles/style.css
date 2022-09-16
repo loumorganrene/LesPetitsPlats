@@ -39,27 +39,26 @@ header {
     font-weight: bold;
 }
 
-.searchbar-wrapper[data-tag]::after {
-    content: attr(data-tag);
-    font-size: 1rem;
-    background-color: #0d6efd;
+/****** Tag ******/
+#tag-list {
+    display: none;
+    flex-direction: row;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    padding: .5rem 1rem;
+    margin: 0 .5rem 0 0;
     width: fit-content;
-    height: 2.5rem;
-    display: block;
-    color: white;
-    padding: 0 1rem;
-    padding-top: 1rem;
-    margin-top: 7px;
-    margin-bottom: 7px;
     border-radius: 5px;
-    text-align: left;
-    line-height: 0.3;
-    opacity: 0;
-    transition: 0.3s;
+    background-color: #0d6efd;
+    color: white;
+    font-size: 1rem;
   }
 
-  .searchbar-wrapper[data-tag-visible="true"]::after {
-    opacity: 1;
+  .tag span {
+    margin-right: .5rem;
   }
 
 /**** Dropdown *****/
@@ -74,6 +73,7 @@ header {
 .dropdown-toggle,
 .dropdown-toggle::after {
     color: white;
+    padding: 0;
 }
 
 .bg-teal {

@@ -27,17 +27,17 @@
   </header>
   <!-- Recipes thumbnail list -->
   <nav class="container-75 mx-5 px-5">
-
       <div class="searchbar-wrapper position-relative">
-        <input type="text" class="searchbar mb-4 form-control" placeholder="Rechercher une recette" aria-label="Search">
+        <input type="text" class="searchbar mb-4 form-control" placeholder="Rechercher une recette" aria-label="Search" name="mainSearchbar">
         <button class="search bi bi-search position-absolute"></button>
+        <ul id="tag-list" class="list-unstyled"></ul>
       </div>
       
       <div id="sorting-list" class="p-0 mb-4 row row-cols-3">
       <!-- Selector is also a searching bar -->
       <div id="ingredients" class="btn-group btn-width">
         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          Ingrédients
+          Ingrédients  
         </button>
         <div class="dropdown-menu bg-primary">
           <input class="ingredient-searchbar bg-primary dropdown-searchbar" type="search" autocomplete="true" placeholder="Rechercher un ingrédient">
@@ -47,7 +47,7 @@
 
       <div id="appareils" class="btn-group btn-width">
         <button type="button" class="btn bg-teal dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          Appareils
+          Appareils  
         </button>
         <div class="dropdown-menu bg-teal">
           <input class="appliance-searchbar bg-teal dropdown-searchbar" type="search" autocomplete="true" placeholder="Rechercher un appareil">
@@ -64,7 +64,6 @@
           <ul class="list-unstyled"></ul>
         </div>
     </div>
-
   </nav>
 
   <main id="main" class="container-100 px-5 mx-5">
