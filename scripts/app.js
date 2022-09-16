@@ -13,7 +13,6 @@ import {
 import {
     SearchHandler
 } from "./handlers/SearchHandler.js";
-
 class App {
     constructor() {}
     /**
@@ -21,15 +20,8 @@ class App {
      */
     async main() {
         const recipeData = recipes.map(recipe => new Recipe(recipe))
-        
-        /** Test */
-        console.log("----From App.js----")
-        console.log(recipeData)
-        console.log("-------------------")
-
         createDropdown(recipeData)
         createCards(recipeData)
-        
         const search = new SearchHandler(recipeData)
         search.init()
     }

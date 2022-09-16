@@ -1,6 +1,6 @@
 import {
     removeDuplicates
-} from '../Utils/ArrayUtils.js';
+} from '../Utils/Utils.js';
 // DOM Element
 export const $ingredientsWrapper = document.querySelector('#ingredients ul')
 export const $appliancesWrapper = document.querySelector('#appareils ul')

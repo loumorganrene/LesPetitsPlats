@@ -8,9 +8,11 @@ import {
     createDropdown
 } from '../Utils/CreateDropdown.js';
 import {
-    createTag,
-    removeTag
+    createTag
 } from '../templates/TagTemplate.js';
+import {
+    resetInput
+} from '../Utils/Utils.js';
 // DOM Element
 export const mainSearchbar = document.querySelector('.searchbar')
 export const $tagWrapper = document.querySelector('#tag-list')
@@ -34,71 +36,74 @@ export class SearchHandler {
     }
 
     init() {
-        //mainSearch init
-        mainSearchbar.value = ""
+        /** reset input */
+        mainSearchbar.value = ''
+        resetInput()
+        /** mainSearch init */
         mainSearchbar.addEventListener('input', e => {
             const userInput = e.target.value.toLowerCase()
             this._searchState.main = userInput
             this.searchUpdate()
         })
-        //tagSearch init
+        /** tagSearch init */
         $ingredientsWrapper.addEventListener("click", e => {
-            const userSelection = e.target.innerHTML
-            createTag(userSelection)
-            this._searchState.ingredients = userSelection
-            // this._searchState.ingredients.push(userSelection)
-            this.searchUpdate()
-            // tagRemove init
-            $tagWrapper.addEventListener("click", e => {
-                e.target.closest('.tag').remove()
-                this._searchState.ingredients = ""
-                if ($tagWrapper.querySelector('li') == null) {
-                    $tagWrapper.style.display = "none"
-                    console.log($tagWrapper.querySelector('li'))
-                }
+            if (e.target.closest('li')) {
+                const userSelection = e.target.innerHTML
+                createTag(userSelection)
+                this._searchState.ingredients = userSelection
                 this.searchUpdate()
-            })
+                //tagRemove init
+                $tagWrapper.addEventListener("click", e => {
+                    e.target.closest('.tag').remove()
+                    this._searchState.ingredients = ""
+                    if ($tagWrapper.querySelector('li') == null) {
+                        $tagWrapper.style.display = "none"
+                    }
+                    this.searchUpdate()
+                })
+            }
+            return
         })
-
         $appliancesWrapper.addEventListener("click", e => {
-            const userSelection = e.target.innerHTML
-            createTag(userSelection)
-            document.querySelector(".tag:last-child").style.backgroundColor = "#68D9A4"
-            // this._searchState.appliances.push(userSelection)
-            this._searchState.appliances = userSelection
-            this.searchUpdate()
-            // tagRemove init
-            $tagWrapper.addEventListener("click", e => {
-                e.target.closest('.tag').remove()
-                this._searchState.appliances = ""
-                if ($tagWrapper.querySelector('li') == null) {
-                    $tagWrapper.style.display = "none"
-                    console.log($tagWrapper.querySelector('li'))
-                }
+            if (e.target.closest('li')) {
+                const userSelection = e.target.closest('li').innerHTML
+                createTag(userSelection)
+                document.querySelector(".tag:last-child").style.backgroundColor = "#68D9A4"
+                this._searchState.appliances = userSelection
                 this.searchUpdate()
-            })
+                // tagRemove init
+                $tagWrapper.addEventListener("click", e => {
+                    e.target.closest('.tag').remove()
+                    this._searchState.appliances = ""
+                    if ($tagWrapper.querySelector('li') == null) {
+                        $tagWrapper.style.display = "none"
+                        console.log($tagWrapper.querySelector('li'))
+                    }
+                    this.searchUpdate()
+                })
+            }
+            return
         })
-
         $ustensilsWrapper.addEventListener("click", e => {
-            const userSelection = e.target.innerHTML
-            createTag(userSelection)
-            document.querySelector(".tag:last-child").style.backgroundColor = "#dc3545"
-            // this._searchState.ustensils.push(userSelection)
-            this._searchState.ustensils = userSelection
-            this.searchUpdate()
-            // tagRemove init
-            $tagWrapper.addEventListener("click", e => {
-                e.target.closest('.tag').remove()
-                this._searchState.ustensils = ""
-                if ($tagWrapper.querySelector('li') == null) {
-                    $tagWrapper.style.display = "none"
-                    console.log($tagWrapper.querySelector('li'))
-                }
+            if (e.target.closest('li')) {
+                const userSelection = e.target.closest('li').innerHTML
+                createTag(userSelection)
+                document.querySelector(".tag:last-child").style.backgroundColor = "#dc3545"
+                this._searchState.ustensils = userSelection
                 this.searchUpdate()
-            })
+                // tagRemove init
+                $tagWrapper.addEventListener("click", e => {
+                    e.target.closest('.tag').remove()
+                    this._searchState.ustensils = ""
+                    if ($tagWrapper.querySelector('li') == null) {
+                        $tagWrapper.style.display = "none"
+                        console.log($tagWrapper.querySelector('li'))
+                    }
+                    this.searchUpdate()
+                })
+            }
+            return
         })
-        // removeTag(e.target)
-
     }
 
     searchUpdate() {
@@ -106,11 +111,10 @@ export class SearchHandler {
         this.ingredientTagSelection(this.finalSearchResult, this._searchState.ingredients)
         this.applianceTagSelection(this.finalSearchResult, this._searchState.appliances)
         this.ustensilTagSelection(this.finalSearchResult, this._searchState.ustensils)
-
         createDropdown(this.finalSearchResult)
         createCards(this.finalSearchResult)
     }
-    // $ingredientsWrapper.querySelector('li').remove(this._searchState.ingredients)
+
     mainSearchbar(recipeData, userInput) {
         const searchFilter = recipeData.filter(recipe => {
             return Boolean(userInput.match(RegEx) &&
@@ -125,14 +129,15 @@ export class SearchHandler {
         const tagFilter = recipeData.filter(recipe => {
             return Boolean(recipe._ingredientsList.join().toLowerCase().includes(userSelection))
         })
+        resetInput()
         this.finalSearchResult = tagFilter
-        console.log(this.finalSearchResult)
     }
 
     applianceTagSelection(recipeData, userSelection) {
         const tagFilter = recipeData.filter(recipe => {
             return Boolean(recipe._appliance.toLowerCase().includes(userSelection))
         })
+        resetInput()
         this.finalSearchResult = tagFilter
     }
 
@@ -140,6 +145,7 @@ export class SearchHandler {
         const tagFilter = recipeData.filter(recipe => {
             return Boolean(recipe._ustensils.join().includes(userSelection))
         })
+        resetInput()
         this.finalSearchResult = tagFilter
     }
 }
