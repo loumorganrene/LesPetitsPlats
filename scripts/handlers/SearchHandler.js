@@ -8,10 +8,12 @@ import {
     createDropdown
 } from '../Utils/CreateDropdown.js';
 import {
-    createTag
+    createTag,
+    removeTag
 } from '../templates/TagTemplate.js';
 // DOM Element
 export const mainSearchbar = document.querySelector('.searchbar')
+export const $tagWrapper = document.querySelector('#tag-list')
 
 // REGEX
 const RegEx = /[^0-9<>()[\]\\.,;:\s@"][A-Za-zÀ-ž]{2,}/
@@ -46,6 +48,16 @@ export class SearchHandler {
             this._searchState.ingredients = userSelection
             // this._searchState.ingredients.push(userSelection)
             this.searchUpdate()
+            // tagRemove init
+            $tagWrapper.addEventListener("click", e => {
+                e.target.closest('.tag').remove()
+                this._searchState.ingredients = ""
+                if ($tagWrapper.querySelector('li') == null) {
+                    $tagWrapper.style.display = "none"
+                    console.log($tagWrapper.querySelector('li'))
+                }
+                this.searchUpdate()
+            })
         })
 
         $appliancesWrapper.addEventListener("click", e => {
@@ -55,6 +67,16 @@ export class SearchHandler {
             // this._searchState.appliances.push(userSelection)
             this._searchState.appliances = userSelection
             this.searchUpdate()
+            // tagRemove init
+            $tagWrapper.addEventListener("click", e => {
+                e.target.closest('.tag').remove()
+                this._searchState.appliances = ""
+                if ($tagWrapper.querySelector('li') == null) {
+                    $tagWrapper.style.display = "none"
+                    console.log($tagWrapper.querySelector('li'))
+                }
+                this.searchUpdate()
+            })
         })
 
         $ustensilsWrapper.addEventListener("click", e => {
@@ -64,8 +86,19 @@ export class SearchHandler {
             // this._searchState.ustensils.push(userSelection)
             this._searchState.ustensils = userSelection
             this.searchUpdate()
+            // tagRemove init
+            $tagWrapper.addEventListener("click", e => {
+                e.target.closest('.tag').remove()
+                this._searchState.ustensils = ""
+                if ($tagWrapper.querySelector('li') == null) {
+                    $tagWrapper.style.display = "none"
+                    console.log($tagWrapper.querySelector('li'))
+                }
+                this.searchUpdate()
+            })
         })
         // removeTag(e.target)
+
     }
 
     searchUpdate() {
