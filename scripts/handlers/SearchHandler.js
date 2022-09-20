@@ -8,7 +8,8 @@ import {
     createDropdown
 } from '../Utils/CreateDropdown.js';
 import {
-    createTag
+    createTag,
+    removeTagWrapper
 } from '../templates/TagTemplate.js';
 import {
     resetInput
@@ -16,10 +17,8 @@ import {
 // DOM Element
 export const mainSearchbar = document.querySelector('.searchbar')
 export const $tagWrapper = document.querySelector('#tag-list')
-
 // REGEX
 const RegEx = /[^0-9<>()[\]\\.,;:\s@"][A-Za-zÀ-ž]{2,}/
-
 export class SearchHandler {
     /**
      * @param {import('./models/RecipeModel').RecipeModel} recipeData 
@@ -46,63 +45,49 @@ export class SearchHandler {
             this.searchUpdate()
         })
         /** tagSearch init */
-        $ingredientsWrapper.addEventListener("click", e => {
-            if (e.target.closest('li')) {
-                const userSelection = e.target.innerHTML
-                createTag(userSelection)
-                this._searchState.ingredients = userSelection
+        $ingredientsWrapper.addEventListener("click", item => {
+            if (item.target.closest('li')) {
+                const userSelection = item.target.innerHTML
+                this.addTag('ingredients', userSelection)
                 this.searchUpdate()
                 //tagRemove init
-                $tagWrapper.addEventListener("click", e => {
-                    e.target.closest('.tag').remove()
-                    this._searchState.ingredients = ""
-                    if ($tagWrapper.querySelector('li') == null) {
-                        $tagWrapper.style.display = "none"
-                    }
+                $tagWrapper.addEventListener("click", tag => {
+                    tag.target.closest('.tag').remove()
+                    this.removeTag('ingredients', tag.target.closest('.tag').textContent)
+                    removeTagWrapper()
                     this.searchUpdate()
                 })
             }
-            return
         })
-        $appliancesWrapper.addEventListener("click", e => {
-            if (e.target.closest('li')) {
-                const userSelection = e.target.closest('li').innerHTML
-                createTag(userSelection)
-                document.querySelector(".tag:last-child").style.backgroundColor = "#68D9A4"
-                this._searchState.appliances = userSelection
+        $appliancesWrapper.addEventListener("click", item => {
+            if (item.target.closest('li')) {
+                const userSelection = item.target.innerHTML
+                this.addTag('appliances', userSelection)
+                document.querySelector(".tag:last-child").classList.add('green-tag')
                 this.searchUpdate()
-                // tagRemove init
-                $tagWrapper.addEventListener("click", e => {
-                    e.target.closest('.tag').remove()
-                    this._searchState.appliances = ""
-                    if ($tagWrapper.querySelector('li') == null) {
-                        $tagWrapper.style.display = "none"
-                        console.log($tagWrapper.querySelector('li'))
-                    }
+                //tagRemove init
+                $tagWrapper.addEventListener("click", tag => {
+                    tag.target.closest('.tag').remove()
+                    this.removeTag('appliances', tag.target.closest('.tag').textContent)
+                    removeTagWrapper()
                     this.searchUpdate()
                 })
             }
-            return
         })
-        $ustensilsWrapper.addEventListener("click", e => {
-            if (e.target.closest('li')) {
-                const userSelection = e.target.closest('li').innerHTML
-                createTag(userSelection)
-                document.querySelector(".tag:last-child").style.backgroundColor = "#dc3545"
-                this._searchState.ustensils = userSelection
+        $ustensilsWrapper.addEventListener("click", item => {
+            if (item.target.closest('li')) {
+                const userSelection = item.target.innerHTML
+                this.addTag('ustensils', userSelection)
+                document.querySelector(".tag:last-child").classList.add('red-tag')
                 this.searchUpdate()
-                // tagRemove init
-                $tagWrapper.addEventListener("click", e => {
-                    e.target.closest('.tag').remove()
-                    this._searchState.ustensils = ""
-                    if ($tagWrapper.querySelector('li') == null) {
-                        $tagWrapper.style.display = "none"
-                        console.log($tagWrapper.querySelector('li'))
-                    }
+                //tagRemove init
+                $tagWrapper.addEventListener("click", tag => {
+                    tag.target.closest('.tag').remove()
+                    this.removeTag('ustensils', tag.target.closest('.tag').textContent)
+                    removeTagWrapper()
                     this.searchUpdate()
                 })
             }
-            return
         })
     }
 
@@ -114,7 +99,10 @@ export class SearchHandler {
         createDropdown(this.finalSearchResult)
         createCards(this.finalSearchResult)
     }
-
+    /**
+     * @param {Recipe[]} recipeData
+     * @param {string} userInput 
+     */
     mainSearchbar(recipeData, userInput) {
         const searchFilter = recipeData.filter(recipe => {
             return Boolean(userInput.match(RegEx) &&
@@ -124,28 +112,54 @@ export class SearchHandler {
         })
         this.finalSearchResult = searchFilter
     }
-
+    /**
+     * @param {Recipe[]} recipeData
+     * @param {string} userInput 
+     */
     ingredientTagSelection(recipeData, userSelection) {
         const tagFilter = recipeData.filter(recipe => {
-            return Boolean(recipe._ingredientsList.join().toLowerCase().includes(userSelection))
+            return userSelection.every(ing => recipe._ingredientsList.join().toLowerCase().includes(ing.toLowerCase()))
         })
         resetInput()
         this.finalSearchResult = tagFilter
     }
-
+    /**
+     * @param {Recipe[]} recipeData
+     * @param {string} userInput 
+     */
     applianceTagSelection(recipeData, userSelection) {
         const tagFilter = recipeData.filter(recipe => {
-            return Boolean(recipe._appliance.toLowerCase().includes(userSelection))
+            return recipe._appliance.toLowerCase().includes(userSelection)
         })
         resetInput()
         this.finalSearchResult = tagFilter
     }
-
+    /**
+     * @param {Recipe[]} recipeData
+     * @param {string} userInput 
+     */
     ustensilTagSelection(recipeData, userSelection) {
         const tagFilter = recipeData.filter(recipe => {
-            return Boolean(recipe._ustensils.join().includes(userSelection))
+            return recipe._ustensils.join().includes(userSelection)
         })
         resetInput()
         this.finalSearchResult = tagFilter
+    }
+    /**
+     * @param {'ingredients' | 'ustensils' | 'appliances'} type 
+     * @param {string} tag 
+     */
+    addTag(type, tag) {
+        if (!this._searchState[type].includes(tag)) {
+            this._searchState[type].push(tag)
+            createTag(tag)
+        }
+    }
+    /**
+     * @param {'ingredients' | 'ustensils' | 'appliances'} type 
+     * @param {string} tag 
+     */
+    removeTag(type, tag) {
+        this._searchState[type] = this._searchState[type].filter(i => i !== tag)
     }
 }

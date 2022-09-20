@@ -1,7 +1,6 @@
 import {
     DropdownList
 } from "../templates/DropdownTemplate.js";
-
 export const $ingredientsWrapper = document.querySelector('#ingredients .dropdown-menu')
 export const $appliancesWrapper = document.querySelector('#appareils .dropdown-menu')
 export const $ustensilsWrapper = document.querySelector('#ustensils .dropdown-menu')
@@ -9,9 +8,7 @@ export const $dropdownWrapper = document.querySelector('#sorting-list')
 export const ingredientsSearchbar = document.querySelector('.ingredient-searchbar')
 export const appliancesSearchbar = document.querySelector('.appliance-searchbar')
 export const ustensilsSearchbar = document.querySelector('.ustensil-searchbar')
-
 /**
- * 
  * @param {Recipe[]} recipes 
  */
  export function createDropdown(recipes) {

@@ -9,7 +9,6 @@
  * @property {string} appliance
  * @property {string} ustensils
  */
-
 export class Recipe {
     constructor(recipes) {
         this._id = recipes.id;
@@ -24,6 +23,3 @@ export class Recipe {
         this._ustensilsList = this._ustensils;
     }
 }
-
-
-

@@ -6,7 +6,6 @@ export class RecipeCard {
         this._recipe = recipeData
         this._ingredientsData = this._recipe._ingredientsData
     }
-
     /**
      * @returns {HTMLDOMElements}
      */
@@ -14,7 +13,6 @@ export class RecipeCard {
         const docFrag = document.createDocumentFragment();
         const $wrapper = document.createElement('article')
         $wrapper.classList.add('col')
-        
         const ingredient = this._ingredientsData.map(i => {
             // console.log(i)
             const ingredientName = `<strong>${i.ingredient}</strong>`
@@ -27,9 +25,8 @@ export class RecipeCard {
             } else {
                 return `<li>${ingredientName}</li>`
             }
-        }).join('')         
-
-        const dom =  `
+        }).join('')
+        const dom = `
                     <div class="card h-100 shadow-sm">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
                             aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -52,7 +49,6 @@ export class RecipeCard {
         `
         $wrapper.innerHTML = dom
         docFrag.appendChild($wrapper)
-
         return docFrag
     }
 }

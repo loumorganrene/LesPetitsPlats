@@ -11,7 +11,6 @@ export class DropdownList {
      */
     constructor(recipeData) {
         this._recipe = recipeData
-
         this._ingredientsList = removeDuplicates(this._recipe
             .map(list => list._ingredientsList)
             //concat all-arrays items in one
@@ -20,14 +19,12 @@ export class DropdownList {
             .sort(function (a, b) {
                 return a > b
             }))
-            console.log(this._ingredientsList)
         this._appliancesList = removeDuplicates(this._recipe
             .map(list => list._appliance.toLowerCase())
             //alphabetical order
             .sort(function (a, b) {
                 return a > b
             }))
-
         this._ustensilsList = removeDuplicates(this._recipe
             .map(list => list._ustensils)
             //concat all-arrays items in one
@@ -53,10 +50,8 @@ export class DropdownList {
             })
             .join('')
         const ingredientDropdown = `${ingredient}`
-
         $ingredientsWrapper.innerHTML = ingredientDropdown
         docFrag.appendChild($ingredientsWrapper)
-
         return docFrag
     }
     /**
@@ -72,10 +67,8 @@ export class DropdownList {
             })
             .join('')
         const applianceDropdown = `${appliance}`
-
         $appliancesWrapper.innerHTML = applianceDropdown
         docFrag.appendChild($appliancesWrapper)
-
         return docFrag
     }
     /**
@@ -91,10 +84,8 @@ export class DropdownList {
             })
             .join('')
         const ustensilDropdown = `${ustensil}`
-
         $ustensilsWrapper.innerHTML = ustensilDropdown
         docFrag.appendChild($ustensilsWrapper)
-
         return docFrag
     }
 }
