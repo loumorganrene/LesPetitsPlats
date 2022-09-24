@@ -12,7 +12,8 @@ import {
     removeTagWrapper
 } from '../templates/TagTemplate.js';
 import {
-    resetInput
+    resetInput,
+    norecipeMessage
 } from '../Utils/Utils.js';
 // DOM Element
 export const mainSearchbar = document.querySelector('.searchbar')
@@ -110,7 +111,10 @@ export class SearchHandler {
                 recipe._directions.includes(userInput) ||
                 recipe._name.toLowerCase().includes(userInput))
         })
-        this.finalSearchResult = searchFilter
+        if (searchFilter) {
+            this.finalSearchResult = searchFilter
+        }
+        norecipeMessage()
     }
     /**
      * @param {Recipe[]} recipeData
