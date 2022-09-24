@@ -12,7 +12,8 @@ import {
     removeTagWrapper
 } from '../templates/TagTemplate.js';
 import {
-    resetInput
+    resetInput,
+    norecipeMessage
 } from '../Utils/Utils.js';
 // DOM Element
 export const mainSearchbar = document.querySelector('.searchbar')
@@ -90,7 +91,9 @@ export class SearchHandler {
             }
         })
     }
-
+    /**
+     * @returns {HTMLDOMElements}
+     */
     searchUpdate() {
         this.mainSearchbar(this._recipe, this._searchState.main)
         this.ingredientTagSelection(this.finalSearchResult, this._searchState.ingredients)
@@ -104,13 +107,21 @@ export class SearchHandler {
      * @param {string} userInput 
      */
     mainSearchbar(recipeData, userInput) {
-        const searchFilter = recipeData.filter(recipe => {
-            return Boolean(userInput.match(RegEx) &&
-                recipe._ingredientsList.join().includes(userInput) ||
-                recipe._directions.includes(userInput) ||
-                recipe._name.toLowerCase().includes(userInput))
-        })
-        this.finalSearchResult = searchFilter
+        const searchFilter = []
+        if (userInput.match(RegEx)) {
+            for (let i = 0; i < recipeData.length; i++) {
+                if (recipeData[i]._ingredientsList.join().includes(userInput)||
+                recipeData[i]._directions.includes(userInput)||
+                recipeData[i]._name.toLowerCase().includes(userInput)) {
+                    searchFilter.push(recipeData[i])
+                } else {
+                    norecipeMessage()
+                }
+            }
+            this.finalSearchResult = searchFilter
+        } else {
+            this.finalSearchResult = recipeData
+        }
     }
     /**
      * @param {Recipe[]} recipeData
