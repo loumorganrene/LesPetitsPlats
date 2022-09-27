@@ -99,8 +99,13 @@ export class SearchHandler {
         this.ingredientTagSelection(this.finalSearchResult, this._searchState.ingredients)
         this.applianceTagSelection(this.finalSearchResult, this._searchState.appliances)
         this.ustensilTagSelection(this.finalSearchResult, this._searchState.ustensils)
-        createDropdown(this.finalSearchResult)
-        createCards(this.finalSearchResult)
+
+        if (this.finalSearchResult.length > 0) {
+            createDropdown(this.finalSearchResult)
+            createCards(this.finalSearchResult)
+        } else {
+            norecipeMessage()
+        }
     }
     /**
      * @param {Recipe[]} recipeData
@@ -110,12 +115,10 @@ export class SearchHandler {
         const searchFilter = []
         if (userInput.match(RegEx)) {
             for (let i = 0; i < recipeData.length; i++) {
-                if (recipeData[i]._ingredientsList.join().includes(userInput)||
-                recipeData[i]._directions.includes(userInput)||
-                recipeData[i]._name.toLowerCase().includes(userInput)) {
+                if (recipeData[i]._ingredientsList.join().includes(userInput) ||
+                    recipeData[i]._directions.includes(userInput) ||
+                    recipeData[i]._name.toLowerCase().includes(userInput)) {
                     searchFilter.push(recipeData[i])
-                } else {
-                    norecipeMessage()
                 }
             }
             this.finalSearchResult = searchFilter

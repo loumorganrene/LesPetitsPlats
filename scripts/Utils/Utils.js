@@ -17,7 +17,9 @@ export function resetInput() {
     appliancesSearchbar.value = ''
     ustensilsSearchbar.value = ''
 }
-
+/**
+ * @returns {HTMLDOMElements}
+ */
 export function norecipeMessage() {
     $recipesWrapper.innerHTML =
         ` <p class="noresult">Aucune recette ne correspond à votre critère... vous pouvez
