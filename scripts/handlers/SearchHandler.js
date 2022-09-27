@@ -97,8 +97,12 @@ export class SearchHandler {
         this.ingredientTagSelection(this.finalSearchResult, this._searchState.ingredients)
         this.applianceTagSelection(this.finalSearchResult, this._searchState.appliances)
         this.ustensilTagSelection(this.finalSearchResult, this._searchState.ustensils)
-        createDropdown(this.finalSearchResult)
-        createCards(this.finalSearchResult)
+        if (this.finalSearchResult.length > 0) {
+            createDropdown(this.finalSearchResult)
+            createCards(this.finalSearchResult)
+        } else {
+            norecipeMessage()
+        }
     }
     /**
      * @param {Recipe[]} recipeData
@@ -111,10 +115,7 @@ export class SearchHandler {
                 recipe._directions.includes(userInput) ||
                 recipe._name.toLowerCase().includes(userInput))
         })
-        if (searchFilter) {
-            this.finalSearchResult = searchFilter
-        }
-        norecipeMessage()
+        this.finalSearchResult = searchFilter
     }
     /**
      * @param {Recipe[]} recipeData
