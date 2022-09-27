@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-09-27T17:59:44.212Z" agent="5.0 (Windows)" etag="UBbhhdnIKTP2-Bq6NIrd" version="20.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-27T21:31:06.926Z" agent="5.0 (Windows)" etag="Gkx94-vv-J_LKa1GFx2v" version="20.3.6" type="github">
   <diagram id="ga-sgr3PPKh_4a51wKOV" name="Page-1">
     <mxGraphModel dx="1418" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -63,7 +63,7 @@
             <mxPoint x="15" y="245" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rws3jVxYOCs86u8TmgI2-19" value="noRecipeMessage()" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="rws3jVxYOCs86u8TmgI2-19" value="display noRecipeMessage()" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="35" y="545" width="130" height="60" as="geometry" />
         </mxCell>
         <mxCell id="rws3jVxYOCs86u8TmgI2-22" value="FALSE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -92,7 +92,7 @@
         <mxCell id="LoJJO0c_ScXFvc4OFsKD-3" value="TRUE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="528" y="730" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="LoJJO0c_ScXFvc4OFsKD-6" value="&lt;div&gt;display new recipes card&lt;/div&gt;&lt;div&gt;and&lt;/div&gt;&lt;div&gt;display new dropDowns lists of item&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="LoJJO0c_ScXFvc4OFsKD-6" value="&lt;div&gt;display new recipes cards&lt;/div&gt;&lt;div&gt;and&lt;/div&gt;&lt;div&gt;new dropDowns lists of items&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="293" y="885" width="226" height="70" as="geometry" />
         </mxCell>
       </root>
