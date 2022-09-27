@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-09-27T17:44:37.375Z" agent="5.0 (Windows)" etag="e7QCko2EQRE3Dg4HcgK7" version="20.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-27T17:46:01.038Z" agent="5.0 (Windows)" etag="r6Y9srf5VbPk5VvVpWxa" version="20.3.6" type="github">
   <diagram id="ga-sgr3PPKh_4a51wKOV" name="Page-1">
     <mxGraphModel dx="1418" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -76,10 +76,19 @@
           <mxGeometry x="234" y="410" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="rws3jVxYOCs86u8TmgI2-24" value="TRUE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="378" y="510" width="60" height="30" as="geometry" />
+          <mxGeometry x="560" y="550" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="rws3jVxYOCs86u8TmgI2-26" value="&lt;div&gt;Display newRecipe&lt;/div&gt;&lt;div&gt;New dropdown items&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="664" y="690" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LoJJO0c_ScXFvc4OFsKD-1" value="TRUE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="388" y="520" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LoJJO0c_ScXFvc4OFsKD-2" value="TRUE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="685" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LoJJO0c_ScXFvc4OFsKD-3" value="TRUE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="805" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
