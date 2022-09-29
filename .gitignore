@@ -10,3 +10,8 @@
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# Node Module
+node_modules
+**/node_modules
+

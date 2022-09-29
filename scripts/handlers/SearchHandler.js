@@ -1,12 +1,12 @@
 import {
     createCards
-} from '../Utils/CreateCard.js';
+} from '../utils/CreateCard.js';
 import {
     $ingredientsWrapper,
     $appliancesWrapper,
     $ustensilsWrapper,
     createDropdown
-} from '../Utils/CreateDropdown.js';
+} from '../utils/CreateDropdown.js';
 import {
     createTag,
     removeTagWrapper
@@ -14,7 +14,7 @@ import {
 import {
     resetInput,
     norecipeMessage
-} from '../Utils/Utils.js';
+} from '../utils/Utils.js';
 // DOM Element
 export const mainSearchbar = document.querySelector('.searchbar')
 export const $tagWrapper = document.querySelector('#tag-list')

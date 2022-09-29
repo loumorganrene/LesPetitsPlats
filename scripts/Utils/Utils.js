@@ -2,10 +2,10 @@ import {
     ingredientsSearchbar,
     appliancesSearchbar,
     ustensilsSearchbar
-} from '../Utils/CreateDropdown.js';
+} from './CreateDropdown.js';
 import {
     $recipesWrapper
-} from '../Utils/CreateCard.js';
+} from './CreateCard.js';
 export function removeDuplicates(array) {
     return Array.from(new Set(array))
 }
