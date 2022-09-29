@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-09-29T00:35:24.368Z" agent="5.0 (Windows)" etag="M8qhU-R7wGF4J2Hypmll" version="20.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-29T00:37:55.569Z" agent="5.0 (Windows)" etag="R3jd1XjxHVN9EsB-mN75" version="20.3.6" type="github">
   <diagram id="ga-sgr3PPKh_4a51wKOV" name="Page-1">
     <mxGraphModel dx="1043" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -103,9 +103,6 @@
             <mxPoint x="634" y="745" as="sourcePoint" />
             <mxPoint x="634" y="870" as="targetPoint" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="Qucaptv6ftysEICXDW74-11" value="&lt;blockquote&gt;&lt;div align=&quot;center&quot;&gt;if the user backspace their input, the original recipes array is restored because this algorythm create a totally new array where only the matching one have been pushed&lt;/div&gt;&lt;/blockquote&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;align=center;rounded=0;perimeterSpacing=0;" vertex="1" parent="1">
-          <mxGeometry x="41" y="960" width="400" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
